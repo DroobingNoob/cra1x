@@ -82,21 +82,15 @@ const Bestsellers = () => {
         <div className="relative w-full">
           <Slider {...settings}>
             {products.map((product) => (
-              <div
-                key={product.id}
-                className="px-2 sm:px-4 py-4 flex flex-col items-center transition-transform duration-300 hover:scale-105"
-              >
-                {/* Product Image */}
-                <div className="w-full max-w-[160px] sm:max-w-[200px] aspect-square overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
+              <div className="px-2 sm:px-4 py-4 flex flex-col items-center transition-transform duration-300 hover:scale-105 w-full">
+                <div className="aspect-square w-full max-w-[200px] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-
-                {/* Name + Price */}
-                <div className="mt-3 text-center w-full max-w-[160px] sm:max-w-[200px]">
+                <div className="mt-3 text-center w-full max-w-[200px]">
                   <p className="text-lg font-light tracking-wide">
                     {product.name}
                   </p>
