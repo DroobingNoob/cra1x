@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./BestSellers.scss";
@@ -65,6 +65,13 @@ const Bestsellers = () => {
         breakpoint: 768, // mobile
         settings: {
           slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480, // Breakpoint for screens <= 480px
+        settings: {
+          slidesToShow: 2, // Show 1 slide
+          slidesToScroll: 1,
         },
       },
     ],
