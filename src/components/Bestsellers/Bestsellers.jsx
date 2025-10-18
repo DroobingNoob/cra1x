@@ -79,29 +79,28 @@ const Bestsellers = () => {
         </h2>
 
         {/* Carousel */}
-        <div className="relative">
+        <div className="relative w-full">
           <Slider {...settings}>
             {products.map((product) => (
               <div
                 key={product.id}
-                className="px-4 py-5 flex flex-col items-center transition-transform duration-300 hover:scale-105 h-[280px] md:h-[320px]"
+                className="px-2 sm:px-4 py-4 flex flex-col items-center transition-transform duration-300 hover:scale-105"
               >
                 {/* Product Image */}
-                <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
+                <div className="w-full max-w-[160px] sm:max-w-[200px] aspect-square overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-                {/* Name + Price Container */}
-                <div className="mt-auto text-center">
-                  <div className="mt-4 text-center w-[160px] md:w-[200px]">
-                    <p className="text-lg font-light tracking-wide">
-                      {product.name}
-                    </p>
-                    <p className="text-sm opacity-80">{product.price}</p>
-                  </div>
+
+                {/* Name + Price */}
+                <div className="mt-3 text-center w-full max-w-[160px] sm:max-w-[200px]">
+                  <p className="text-lg font-light tracking-wide">
+                    {product.name}
+                  </p>
+                  <p className="text-sm opacity-80">{product.price}</p>
                 </div>
               </div>
             ))}
