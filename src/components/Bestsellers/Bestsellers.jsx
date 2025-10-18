@@ -13,19 +13,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // Custom arrow components
+// Next Arrow
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-[-40px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
+    className="absolute right-0 sm:right-[-40px] md:right-[-10px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
   >
     <ChevronRight className="w-5 h-5" />
   </button>
 );
 
+// Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-[-40px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
+    className="absolute left-0 sm:left-[-40px] md:left-[-10px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
   >
     <ChevronLeft className="w-5 h-5" />
   </button>
