@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import "./Bestsellers.scss";
+import "./BestSellers.scss";
 import belt from "../../assets/images/belt.png";
 import grillz from "../../assets/images/grillz.png";
 import keychain from "../../assets/images/keychain.png";
