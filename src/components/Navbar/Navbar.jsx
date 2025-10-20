@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       {/* Banner */}
       <div
-        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-[60] transition-all duration-500 ease-in-out font ${
+        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-[100] transition-all duration-500 ease-in-out font ${
           hideBanner
             ? "-translate-y-full opacity-0"
             : "translate-y-0 opacity-100"

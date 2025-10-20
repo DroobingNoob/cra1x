@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import belt from "../../assets/images/belt.png";
 import grillz from "../../assets/images/grillz.png";
 import keychain from "../../assets/images/keychain.png";
@@ -7,79 +8,90 @@ import leatherbag from "../../assets/images/leather-bag.png";
 import neckpiece from "../../assets/images/neck-piece.png";
 import "./ShopExclusive.scss";
 
-const ShopExclusive = () => {
-  return (
-    <section className="relative min-h-[100vh] bg-zinc-950 text-white flex items-center justify-center font overflow-hidden">
-      {/* --- Floating Images --- */}
+export default function ShopExclusive() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-300, 300], [10, -10]);
+  const rotateY = useTransform(x, [-300, 300], [-10, 10]);
 
-      {/* Top Left */}
-      <div className="absolute top-[10%] left-[28%] lg:left-[20%] lg:top-[15%] rotate-[-8deg]">
+  useEffect(() => {
+    const handleMove = (e) => {
+      const { innerWidth, innerHeight } = window;
+      x.set((e.clientX - innerWidth / 2) / 10);
+      y.set((e.clientY - innerHeight / 2) / 10);
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, [x, y]);
+
+  return (
+    <section className="lg:mt-12 exclusive relative min-h-[100vh] text-white flex items-center justify-center overflow-hidden">
+      {/* Floating images */}
+      <motion.div
+        style={{ rotateX, rotateY }}
+        className="absolute inset-0 z-[10] pointer-events-none"
+      >
         <img
           src={belt}
           alt="belt"
-          className="w-[180px] md:w-[200px] lg:w-[190px] grayscale hover:grayscale-0 brightness-[0.8] hover:brightness-100 transition-all duration-500"
+          className="absolute object-contain grayscale hover:grayscale-0 brightness-[0.8] hover:brightness-100 transition-all duration-700 hover:scale-110 float-animation top-[10%] left-[28%] lg:left-[20%] lg:top-[15%] w-[150px] md:w-[200px] lg:w-[200px] z-30"
         />
-      </div>
-
-      {/* Top Right */}
-      <div className="absolute top-[18%] right-[2%] lg:right-[20%] lg:top-[12%] rotate-[5deg]">
         <img
           src={grillz}
           alt="grillz"
-          className="w-[150px] md:w-[190px] lg:w-[230px] grayscale hover:grayscale-0 brightness-[0.85] hover:brightness-105 transition-all duration-500"
+          className="absolute object-contain grayscale hover:grayscale-0 brightness-[0.85] hover:brightness-105 transition-all duration-700 hover:scale-110 float-animation top-[18%] right-[2%] lg:right-[20%] lg:top-[12%] w-[150px] md:w-[200px] lg:w-[200px] z-40"
         />
-      </div>
-
-      {/* Left Mid */}
-      <div className="absolute top-[25%] left-[6%] lg:top-[40%] rotate-[-4deg]">
         <img
           src={keychain}
           alt="keychain"
-          className="w-[130px] md:w-[160px] opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-105"
+          className="absolute object-contain opacity-80 hover:opacity-100 transition-all duration-500 hover:scale-105 float-animation top-[22%] left-[6%] lg:top-[40%] w-[150px] md:w-[180px] lg:w-[180px] z-20"
         />
-      </div>
-
-      {/* Right Mid */}
-      <div className="absolute top-[55%] right-[2%] lg:top-[35%] lg:right-[6%] rotate-[-7deg] lg:rotate-[7deg]">
         <img
           src={leatherbag}
           alt="leatherbag"
-          className="w-[150px] md:w-[220px] lg:w-[190px] grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110"
+          className="absolute object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 float-animation top-[55%] right-[2%] lg:top-[35%] lg:right-[6%] lg:rotate-[7deg] w-[150px] md:w-[180px] lg:w-[210px] z-15"
         />
-      </div>
-
-      {/* Bottom Left */}
-      <div className="absolute bottom-[10%] left-[5%] lg:bottom-[8%] lg:left-[18%] rotate-[3deg]">
         <img
           src={neckpiece}
           alt="neckpiece"
-          className="w-[140px] md:w-[210px] lg-[170px] opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500"
+          className="absolute object-contain opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500 float-animation bottom-[10%] left-[5%] lg:bottom-[8%] lg:left-[18%] w-[150px] md:w-[180px] lg:w-[180px] z-25"
         />
-      </div>
-
-      {/* Bottom Right */}
-      <div className="absolute bottom-[2%] right-[29%] lg:bottom-[10%] lg:right-[18%] rotate-[-5deg]">
         <img
           src={keychain1}
           alt="keychain1"
-          className="w-[130px] md:w-[190px] lg:w-[150px] grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+          className="absolute object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105 float-animation bottom-[7%] right-[29%] lg:bottom-[7%] lg:right-[18%] w-[150px] md:w-[180px] lg:w-[180px] z-35"
         />
-      </div>
+      </motion.div>
 
-      {/* --- Center Text --- */}
-      <div className="z-10 text-center">
-        <p className="text-l lg:text-xl font-light tracking-widest mb-2 goth-font">
-          SOUL
-        </p>
-        <h2 className="text-5xl md:text-7xl lg:text-6xl font-black tracking-tight goth-font">
-          CENTRED
-        </h2>
-      </div>
+      {/* Hero Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-[50] text-center pointer-events-none"
+      >
+        <div className="text-halo-container">
+          <h2 className="text-[4rem] md:text-[6rem] sm:text-[3rem] font-black goth-font text-glow leading-[0.9] tracking-tight">
+            CRA1X
+          </h2>
 
-      {/* Optional subtle overlay */}
-      <div className="absolute inset-0 opacity-[0.05] bg-[url('/textures/grunge-overlay.png')] bg-cover mix-blend-overlay"></div>
+          <p className="uppercase tracking-[0.3em] text-xs md:text-[0.8rem] mt-4 text-zinc-400">
+            SOUL CENTRED
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Glow aura behind text */}
+      <div className="absolute w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05)_0%,transparent_70%)] blur-[120px] z-[5]" />
+
+      {/* CTA */}
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 150 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 border border-zinc-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 "
+      >
+        Explore Drop
+      </motion.button>
     </section>
   );
-};
-
-export default ShopExclusive;
+}

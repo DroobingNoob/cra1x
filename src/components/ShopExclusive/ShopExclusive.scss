@@ -1,20 +1,56 @@
 .goth-font {
-  font-family: "UnifrakturCook", "Cinzel Decorative", "Merriweather", serif;
+  font-family: "UnifrakturCook", "Cinzel Decorative", serif;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-section {
-  position: relative;
-  isolation: isolate;
+.text-halo-container::before {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  width: 250%; /* bigger halo */
+  height: 250%; /* bigger halo */
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+  filter: blur(80px); /* softer, bigger glow */
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* Optional: subtle float animation for more life */
-@keyframes slowFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+.text-glow {
+  color: #ffffff; /* white text */
+  text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px #ffffff,
+    0 0 4px #ffffff; /* lighter glow */
+  animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
-img {
-  animation: slowFloat 6s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.5s);
+@keyframes glowPulse {
+  0% {
+    text-shadow:
+      0 0 0.5px #ffffff,
+      0 0 1px #ffffff,
+      0 0 2px #ffffff;
+  }
+  100% {
+    text-shadow:
+      0 0 1px #ffffff,
+      0 0 2px #ffffff,
+      0 0 4px #ffffff;
+  }
+}
+
+
+/* Subtle floating motion without opacity flicker */
+@keyframes floatSmooth {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.float-animation {
+  animation: floatSmooth 6s ease-in-out infinite;
+  will-change: transform;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));
 }
