@@ -68,7 +68,7 @@ export default function ShopExclusive() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-[50] text-center pointer-events-none"
+        className="relative text-center pointer-events-none"
       >
         <div className="text-halo-container">
           <h2 className="text-[4rem] md:text-[6rem] sm:text-[3rem] font-black goth-font text-glow leading-[0.9] tracking-tight">
