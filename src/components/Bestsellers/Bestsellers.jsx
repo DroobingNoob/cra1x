@@ -1,37 +1,18 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import "./BestSellers.scss";
+import React from "react";
+// React imports
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules"; // Swiper 10+ modules
+
+// CSS
+import "swiper/css";
+import "swiper/css/navigation";
+
 import belt from "../../assets/images/belt.png";
 import grillz from "../../assets/images/grillz.png";
 import keychain from "../../assets/images/keychain.png";
 import keychain1 from "../../assets/images/keychain1.png";
 import leatherbag from "../../assets/images/leather-bag.png";
 import neckpiece from "../../assets/images/neck-piece.png";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-// Custom arrow components
-// Next Arrow
-const NextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute right-0 sm:right-[-40px] md:right-[-10px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
-  >
-    <ChevronRight className="w-5 h-5" />
-  </button>
-);
-
-// Prev Arrow
-const PrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute left-0 sm:left-[-40px] md:left-[-10px] top-1/2 -translate-y-1/2 bg-zinc-800 hover:bg-zinc-700 text-white p-2 rounded-full shadow-md transition-all duration-300 z-10"
-  >
-    <ChevronLeft className="w-5 h-5" />
-  </button>
-);
 
 const Bestsellers = () => {
   const products = [
@@ -43,78 +24,88 @@ const Bestsellers = () => {
     { id: 6, name: "Keychain", price: "₹320.00", image: keychain1 },
   ];
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3500,
-    cssEase: "ease-in-out",
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024, // tablet
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768, // mobile
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480, // Breakpoint for screens <= 480px
-        settings: {
-          slidesToShow: 2, // Show 1 slide
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   return (
-    <section className="relative bg-zinc-950 text-white py-24 px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto text-center relative goth-font">
-        {/* Section Heading */}
-        <h2 className="goth-font text-3xl md:text-4xl font-semibold tracking-wider mb-16 font-mono">
+    <section className="relative bg-zinc-950 text-white py-20 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto text-center goth-font">
+        <h2 className="goth-font text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wider mb-12 sm:mb-16 font-mono">
           OUR BESTSELLERS
         </h2>
 
-        {/* Carousel */}
-        <div className="relative w-full">
-          <Slider {...settings}>
-            {products.map((product) => (
-              <div className="px-2 sm:px-4 py-4 flex flex-col items-center transition-transform duration-300 hover:scale-105 w-full">
-                <div className="aspect-square w-full max-w-[200px] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                </div>
-                <div className="mt-3 text-center w-full max-w-[200px]">
-                  <p className="text-lg font-light tracking-wide">
-                    {product.name}
-                  </p>
-                  <p className="text-sm opacity-80">{product.price}</p>
-                </div>
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          navigation
+          autoplay={{ delay: 3500 }}
+          loop
+          spaceBetween={20}
+          breakpoints={{
+            0: { slidesPerView: 2 }, // mobile
+            768: { slidesPerView: 3 }, // tablet
+            1024: { slidesPerView: 3 }, // desktop
+          }}
+          className="relative"
+        >
+          {products.map((product) => (
+            <SwiperSlide
+              key={product.id}
+              className="flex flex-col items-center"
+            >
+              <div className="aspect-square w-full sm:max-w-[200px] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </div>
-            ))}
-          </Slider>
-        </div>
+              <div className="mt-3 text-center w-full sm:max-w-[200px]">
+                <p className="text-lg sm:text-base font-light tracking-wide">
+                  {product.name}
+                </p>
+                <p className="text-sm opacity-80">{product.price}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-        {/* CTA Button */}
         <div className="mt-14">
           <button className="px-8 py-2 border border-white text-sm tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
             View All
           </button>
         </div>
       </div>
+
+      {/* Custom white arrows */}
+      <style>{`
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  /* Position arrows outside the carousel on desktop */
+  .swiper-button-prev {
+    left: -40px; /* move slightly outside the first slide */
+  }
+  .swiper-button-next {
+    right: -40px; /* move slightly outside the last slide */
+  }
+
+  /* On smaller screens, place arrows below the carousel */
+  @media (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      top: auto;
+      bottom: -40px;
+      transform: translateY(0);
+    }
+    .swiper-button-prev {
+      left: 35%;
+    }
+    .swiper-button-next {
+      right: 35%;
+    }
+  }
+`}</style>
     </section>
   );
 };
