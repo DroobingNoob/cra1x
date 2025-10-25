@@ -27,7 +27,7 @@ const Bestsellers = () => {
   return (
     <section className="relative bg-zinc-950 text-white py-20 px-4 sm:px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center goth-font">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wider mb-12 sm:mb-16 font-mono">
+        <h2 className="goth-font text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wider mb-12 sm:mb-16 font-mono">
           OUR BESTSELLERS
         </h2>
 
