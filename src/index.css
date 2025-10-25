@@ -6,6 +6,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
     /* font-family: 'Merriweather', serif, sans-serif; */
+   
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #000;
@@ -14,6 +17,7 @@ body {
 code {
   /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', */
     /* monospace; */
-
+  
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
   /* font-family: 'Merriweather', serif, sans-serif; */
 }
