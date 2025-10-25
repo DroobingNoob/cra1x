@@ -75,7 +75,7 @@ const FAQ = () => {
 
   return (
     <section className="max-w-4xl mx-auto px-5 py-16 text-white relative z-10">
-      <h2 className="text-4xl md:text-6xl font-black goth-font text-glow text-center mb-12 select-none">
+      <h2 className="text-3xl md:text-6xl font-black goth-font text-glow text-center mb-12 select-none">
         FAQs
       </h2>
 
