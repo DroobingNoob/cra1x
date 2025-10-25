@@ -2,8 +2,7 @@
 
 body {
   margin: 0;
-
-   font-family: 'Comic Sans MS';
+ font-family: 'Comic Neue', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,6 +10,5 @@ body {
 }
 
 code {
- 
-   font-family: 'Comic Sans MS';
+  font-family: 'Comic Neue', sans-serif;
 }
