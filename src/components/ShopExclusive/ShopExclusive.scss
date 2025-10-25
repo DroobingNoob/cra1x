@@ -1,56 +1,31 @@
-.goth-font {
-  font-family: "UnifrakturCook", "Cinzel Decorative", serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.exclusive {
+  font-family: "Space Grotesk", sans-serif;
+
+    .goth-font {
+    font-family: "UnifrakturMaguntia", cursive; // changed from UnifrakturCook
+    font-weight: 400;
+  }
+
+ .text-glow {
+  text-shadow: 
+    0 0 5px #ffffff,       // inner subtle glow
+    0 0 15px rgba(255,255,255,0.2); // outer faint glow
+}
 }
 
-.text-halo-container::before {
+/* optional grain fallback if you skip grain.png */
+.exclusive::before {
   content: "";
   position: absolute;
-  inset: 50%;
-  transform: translate(-50%, -50%);
-  width: 250%; /* bigger halo */
-  height: 250%; /* bigger halo */
-  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
-  filter: blur(80px); /* softer, bigger glow */
-  z-index: -1;
+  inset: 0;
+  background: repeating-radial-gradient(
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.05;
   pointer-events: none;
-}
-
-.text-glow {
-  color: #ffffff; /* white text */
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 2px #ffffff,
-    0 0 4px #ffffff; /* lighter glow */
-  animation: glowPulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulse {
-  0% {
-    text-shadow:
-      0 0 0.5px #ffffff,
-      0 0 1px #ffffff,
-      0 0 2px #ffffff;
-  }
-  100% {
-    text-shadow:
-      0 0 1px #ffffff,
-      0 0 2px #ffffff,
-      0 0 4px #ffffff;
-  }
-}
-
-
-/* Subtle floating motion without opacity flicker */
-@keyframes floatSmooth {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.float-animation {
-  animation: floatSmooth 6s ease-in-out infinite;
-  will-change: transform;
-  filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));
+  z-index: 5;
 }
