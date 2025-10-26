@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ShopExclusive.scss";
 
 import model1 from "../../assets/images/model1.PNG";
@@ -23,6 +24,7 @@ const images = [model1, model2, model3, model5, model6, model7];
 export default function ShopExclusive() {
   const [index, setIndex] = useState(0);
   const darkIndexes = [2, 5];
+  const navigate = useNavigate();
 
   useEffect(() => {
     images.forEach((src) => {
@@ -97,6 +99,7 @@ export default function ShopExclusive() {
 
       {/* Button */}
       <motion.button
+        onClick={() => navigate(`/products`)}
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 160 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 border border-zinc-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 z-40"

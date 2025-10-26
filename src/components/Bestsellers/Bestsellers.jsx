@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -21,6 +22,8 @@ const Bestsellers = () => {
     { id: 5, name: "Neckpiece", price: "₹1,000.00", image: neckpiece },
     { id: 6, name: "Keychain", price: "₹320.00", image: keychain1 },
   ];
+
+  const navigate = useNavigate();
 
   return (
     <section className="relative bg-zinc-950 text-white py-20 px-4 sm:px-6">
@@ -90,7 +93,10 @@ const Bestsellers = () => {
         </div>
 
         <div className="mt-12">
-          <button className="px-8 py-2 border border-white text-sm tracking-wider hover:bg-white hover:text-black transition-colors duration-300">
+          <button
+            onClick={() => navigate("/products")}
+            className="px-8 py-2 border border-white text-sm tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+          >
             View All
           </button>
         </div>

@@ -28,7 +28,7 @@ const Footer = () => {
         {/* Links */}
         <div className="flex flex-col md:flex-row items-center gap-6 text-sm uppercase tracking-wider text-zinc-400">
           <a
-            href="#shop"
+            href="products"
             className="hover:text-white transition-all duration-200"
           >
             Shop
