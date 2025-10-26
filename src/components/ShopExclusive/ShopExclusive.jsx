@@ -16,6 +16,7 @@ import model10 from "../../assets/images/model10.PNG";
 import model11 from "../../assets/images/model11.PNG";
 import model12 from "../../assets/images/model12.PNG";
 import cardboard from "../../assets/images/cardboard-texture.jpg"; // <--- noise overlay
+import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
 
 const images = [model1, model2, model3, model5, model6, model7];
 
@@ -48,7 +49,7 @@ export default function ShopExclusive() {
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className={`absolute inset-0 w-full h-full object-cover object-center ${
             index === 2
               ? "brightness-[0.85] contrast-[1]" // model3 stays normal
@@ -56,24 +57,6 @@ export default function ShopExclusive() {
           }`}
         />
       </AnimatePresence>
-
-      {/* <AnimatePresence mode="wait">
-
-        <motion.img
-          key={index}
-          src={images[index]}
-          alt={`model-${index}`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className={`absolute inset-0 w-full h-full object-cover object-center ${
-            darkIndexes.includes(index)
-              ? "brightness-[1.25] contrast-[1.05]"
-              : "brightness-[1] contrast-[1]"
-          }`}
-        />
-      </AnimatePresence> */}
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90 z-10 pointer-events-none" />
@@ -96,10 +79,18 @@ export default function ShopExclusive() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center"
       >
-        <h1 className="text-[3.5rem] md:text-[6rem] font-black goth-font tracking-tight leading-[0.9] text-glow select-none">
+        {/* <h1 className="text-[3.5rem] md:text-[6rem] font-black goth-font tracking-tight leading-[0.9] text-glow select-none">
           CRA1X
-        </h1>
-        <p className="uppercase text-[0.8rem] tracking-[0.3em] text-zinc-400 mt-4 select-none">
+        </h1> */}
+        <div className="absolute inset-0 flex items-center justify-center z-0">
+          <div className="w-72 h-72 md:w-96 md:h-96 bg-black/60 blur-3xl rounded-full" />
+        </div>
+        <img
+          src={cra1x}
+          alt="Logo"
+          className="w-60 z-10 lg:w-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]"
+        />
+        <p className="uppercase text-[0.8rem] tracking-[0.3em] text-zinc-400 select-none z-10 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]">
           SOUL CENTRED
         </p>
       </motion.div>
