@@ -52,6 +52,7 @@ const Bestsellers = () => {
             {products.map((product) => (
               <SwiperSlide
                 key={product.id}
+                onClick={() => navigate(`/product/${product.id}`)}
                 className="flex flex-col items-center"
               >
                 <div className="mt-2 my-2 bg-zinc-950">

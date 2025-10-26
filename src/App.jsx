@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import MainLayout from "./layouts/MainLayout";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 const App = () => {
   return (
@@ -40,6 +41,14 @@ const App = () => {
           element={
             <MainLayout>
               <ProductDetailsPage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <MainLayout>
+              <AboutUsPage />
             </MainLayout>
           }
         />

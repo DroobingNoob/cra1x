@@ -20,7 +20,7 @@ const InstagramSection = () => {
 
         {/* Follow Button */}
         <a
-          href="https://www.instagram.com/yourusername"
+          href="https://www.instagram.com/cra1x_/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-10 py-4 bg-white text-black goth-font font-bold rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-200 transition-all duration-300"
