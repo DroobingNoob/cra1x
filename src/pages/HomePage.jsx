@@ -10,9 +10,9 @@ import InstagramSection from "../components/InstagramSection/InstagramSection";
 const HomePage = () => {
   return (
     <>
-      <div className="z-[1000]">
+      {/* <div className="z-[1000]">
         <Navbar />
-      </div>
+      </div> */}
       {/* <div className="mt-[100px] sm:mt-[120px] md:mt-[140px]"> */}
       <ShopExclusive />
       <Bestsellers />
@@ -22,7 +22,7 @@ const HomePage = () => {
         <MobileBottomBar />
       </div>
       {/* </div> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

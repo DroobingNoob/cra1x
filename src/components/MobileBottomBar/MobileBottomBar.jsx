@@ -3,7 +3,7 @@ import { ShoppingCart, Heart, User, Grid } from "lucide-react";
 
 const MobileBottomBar = () => {
   return (
-    <div className="sm:hidden fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-[50]">
+    <div className="sm:hidden fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-30">
       {/* Frosted glass background */}
       <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full border border-white/20 shadow-lg pointer-events-none"></div>
 

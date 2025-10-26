@@ -40,7 +40,7 @@ const Navbar = () => {
       {/* Banner */}
       <div
         ref={bannerRef}
-        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-[100] transition-transform duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-40 transition-transform duration-500 ease-in-out ${
           hideBanner
             ? "-translate-y-full opacity-0"
             : "translate-y-0 opacity-100"
@@ -91,11 +91,11 @@ const Navbar = () => {
           <Link to="/" className="hover:text-gray-400 transition">
             Home
           </Link>
-          <Link to="/bestsellers" className="hover:text-gray-400 transition">
-            Bestsellers
+          <Link to="/products" className="hover:text-gray-400 transition">
+            Products
           </Link>
-          <Link to="/new" className="hover:text-gray-400 transition">
-            Just Arrived
+          <Link to="/bestsellers" className="hover:text-gray-400 transition">
+            BestSellers
           </Link>
 
           {/* Categories Dropdown */}
@@ -143,14 +143,18 @@ const Navbar = () => {
             Home
           </Link>
           <Link
+            to="/products"
+            onClick={toggleMenu}
+            className="hover:text-gray-400"
+          >
+            Products
+          </Link>
+          <Link
             to="/bestsellers"
             onClick={toggleMenu}
             className="hover:text-gray-400"
           >
-            Bestsellers
-          </Link>
-          <Link to="/new" onClick={toggleMenu} className="hover:text-gray-400">
-            Just Arrived
+            BestSellers
           </Link>
 
           {/* Mobile Categories Collapsible */}
