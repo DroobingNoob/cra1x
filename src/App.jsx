@@ -6,10 +6,12 @@ import MainLayout from "./layouts/MainLayout";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Wrap pages inside MainLayout */}
         <Route
