@@ -6,6 +6,7 @@ import Bestsellers from "../components/Bestsellers/Bestsellers";
 import MobileBottomBar from "../components/MobileBottomBar/MobileBottomBar";
 import FAQ from "../components/FAQ/FAQ";
 import InstagramSection from "../components/InstagramSection/InstagramSection";
+import ModelShowcase from "../components/ModelShowcase/ModelShowcase";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       {/* <div className="mt-[100px] sm:mt-[120px] md:mt-[140px]"> */}
       <ShopExclusive />
       <Bestsellers />
+      <ModelShowcase />
       <FAQ />
       <InstagramSection />
       <div>
