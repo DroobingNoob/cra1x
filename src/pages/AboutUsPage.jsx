@@ -1,10 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AboutUsPage = () => {
+  const navigate = useNavigate();
   return (
     <section className="bg-zinc-950 text-white py-24 px-6">
       <div className="max-w-5xl mx-auto">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-gray-400 hover:text-white mb-10 transition-colors duration-300"
+        >
+          <ArrowLeft size={20} /> Back
+        </button>
         {/* Header */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

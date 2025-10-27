@@ -7,6 +7,7 @@ import {
   ShoppingCart,
   Eye,
   Heart,
+  ArrowLeft,
 } from "lucide-react";
 
 import belt from "../assets/images/belt.jpg";
@@ -70,6 +71,13 @@ const ProductsPage = () => {
   return (
     <section className="bg-zinc-950 text-white min-h-screen py-24 px-6">
       <div className="max-w-7xl mx-auto">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-gray-400 hover:text-white mb-10 transition-colors duration-300"
+        >
+          <ArrowLeft size={20} /> Back
+        </button>
+
         <h2 className="text-4xl md:text-5xl font-black goth-font text-center mb-14 tracking-wide">
           SHOP PRODUCTS
         </h2>

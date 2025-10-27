@@ -1,11 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, Facebook, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+  Facebook,
+  Send,
+  ArrowLeft,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-zinc-950 text-white py-24 px-6">
       <div className="max-w-6xl mx-auto text-center">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-gray-400 hover:text-white mb-10 transition-colors duration-300"
+        >
+          <ArrowLeft size={20} /> Back
+        </button>
         <h2 className="text-4xl md:text-5xl font-black goth-font text-glow mb-6 select-none relative inline-block">
           CONTACT US
           <span className="block w-20 h-1 bg-white mx-auto mt-2 rounded-full opacity-50"></span>
