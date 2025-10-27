@@ -15,7 +15,7 @@ import model8 from "../../assets/images/model8.JPG";
 const ModelShowcase = () => {
   return (
     <div className="relative w-full bg-[#0a0a0a] py-10 overflow-hidden">
-      <h2 className="text-center text-3xl md:text-4xl text-white mb-8 tracking-wide goth-font">
+      <h2 className="text-center text-3xl md:text-5xl text-white mb-8 tracking-wide goth-font">
         Featured Looks
       </h2>
 

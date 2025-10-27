@@ -32,10 +32,10 @@ const Bestsellers = () => {
           OUR BESTSELLERS
         </h2>
 
-        <div className="relative w-full sm:w-[90%] md:w-[85%] lg:w-[80%] mx-auto px-4 py-4 bg-zinc-950">
+        <div className="relative w-full px-4 py-4 bg-zinc-950">
           <Swiper
             modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 3500 }}
+            autoplay={{ delay: 2500 }}
             loop={true}
             spaceBetween={20}
             slidesPerView={2}
