@@ -8,6 +8,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hideBanner, setHideBanner] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [bannerHeight, setBannerHeight] = useState(0);
   const bannerRef = useRef(null);
 
   const categories = ["keychains", "grillz", "chromeos", "bags", "headphones"];
@@ -17,6 +18,12 @@ const Navbar = () => {
     if (!menuOpen) setHideBanner(true);
     else setHideBanner(false);
   };
+
+  useEffect(() => {
+    if (bannerRef.current) {
+      setBannerHeight(bannerRef.current.offsetHeight);
+    }
+  }, []);
 
   // Hide banner on scroll
   useEffect(() => {
@@ -54,7 +61,7 @@ const Navbar = () => {
       <nav
         className={`fixed w-full left-0 bg-black text-white border-b border-gray-800 z-50 transition-all duration-500 ease-in-out`}
         style={{
-          top: hideBanner ? 0 : bannerRef.current?.offsetHeight || 0,
+          top: hideBanner ? 0 : bannerHeight,
         }}
       >
         {/* Main Row */}
