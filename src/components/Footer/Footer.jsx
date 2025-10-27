@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
 import "./Footer.scss";
 
@@ -28,25 +28,25 @@ const Footer = () => {
         {/* Links */}
         <div className="flex flex-col md:flex-row items-center gap-6 text-sm uppercase tracking-wider text-zinc-400">
           <a
-            href="products"
+            href="/products"
             className="hover:text-white transition-all duration-200"
           >
             Shop
           </a>
           <a
-            href="#bestsellers"
+            href="/bestsellers"
             className="hover:text-white transition-all duration-200"
           >
             Bestsellers
           </a>
           <a
-            href="#about"
+            href="/about"
             className="hover:text-white transition-all duration-200"
           >
             About
           </a>
           <a
-            href="contact"
+            href="/contact"
             className="hover:text-white transition-all duration-200"
           >
             Contact
@@ -55,17 +55,32 @@ const Footer = () => {
 
         {/* Socials */}
         <div className="flex gap-5">
+          {/* Instagram */}
           <a
-            href="#"
+            href="https://www.instagram.com/cra1x_/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-2 rounded-full border border-zinc-700 hover:border-white hover:bg-white/5 transition-all duration-300"
           >
             <Instagram className="w-5 h-5" />
           </a>
+
+          {/* Mail */}
           <a
-            href="#"
+            href="mailto:cra1x.queries@gmail.com"
             className="p-2 rounded-full border border-zinc-700 hover:border-white hover:bg-white/5 transition-all duration-300"
           >
-            <Linkedin className="w-5 h-5" />
+            <Mail className="w-5 h-5" />
+          </a>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/919870140982"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full border border-zinc-700 hover:border-white hover:bg-white/5 transition-all duration-300"
+          >
+            <MessageCircle className="w-5 h-5" />
           </a>
         </div>
       </div>
