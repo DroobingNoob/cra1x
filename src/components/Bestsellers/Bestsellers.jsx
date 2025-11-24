@@ -12,18 +12,58 @@ import keychain from "../../assets/images/keychain.png";
 import keychain1 from "../../assets/images/keychain1.png";
 import leatherbag from "../../assets/images/leather-bag.png";
 import neckpiece from "../../assets/images/neck-piece.png";
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../../config/config";
 
 const Bestsellers = () => {
-  const products = [
-    { id: 1, name: "Belt", price: "₹800.00", image: belt },
-    { id: 2, name: "Grillz", price: "₹600.00", image: grillz },
-    { id: 3, name: "Keychain", price: "₹320.00", image: keychain },
-    { id: 4, name: "Leather Bag", price: "₹1,000.00", image: leatherbag },
-    { id: 5, name: "Neckpiece", price: "₹1,000.00", image: neckpiece },
-    { id: 6, name: "Keychain", price: "₹320.00", image: keychain1 },
-  ];
+  // const products = [
+  //   { id: 1, name: "Belt", price: "₹800.00", image: belt },
+  //   { id: 2, name: "Grillz", price: "₹600.00", image: grillz },
+  //   { id: 3, name: "Keychain", price: "₹320.00", image: keychain },
+  //   { id: 4, name: "Leather Bag", price: "₹1,000.00", image: leatherbag },
+  //   { id: 5, name: "Neckpiece", price: "₹1,000.00", image: neckpiece },
+  //   { id: 6, name: "Keychain", price: "₹320.00", image: keychain1 },
+  // ];
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchBestsellers = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/api/products`);
+        const data = await res.json();
+
+        // filter only products with bestseller: true
+        const bestsellers = data.filter(
+          (p) => p.bestseller && p.visible !== false
+        );
+        setProducts(bestsellers);
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBestsellers();
+  }, []);
+
+  if (loading)
+    return (
+      <section className="bg-zinc-950 text-white py-20 px-4 text-center">
+        <p className="text-gray-400">Loading bestsellers...</p>
+      </section>
+    );
+
+  if (products.length === 0)
+    return (
+      <></>
+      // <section className="bg-zinc-950 text-white py-20 px-4 text-center">
+      //   <p className="text-gray-400">No bestseller products found.</p>
+      // </section>
+    );
 
   return (
     <section className="relative bg-zinc-950 text-white py-20 px-4 sm:px-6">
@@ -51,14 +91,14 @@ const Bestsellers = () => {
           >
             {products.map((product) => (
               <SwiperSlide
-                key={product.id}
-                onClick={() => navigate(`/product/${product.id}`)}
+                key={product._id}
+                onClick={() => navigate(`/product/${product._id}`)}
                 className="flex flex-col items-center"
               >
                 <div className="mt-2 my-2 bg-zinc-950">
                   <div className="aspect-square w-full sm:max-w-[200px] overflow-hidden rounded-xl shadow-[0_0_25px_rgba(255,255,255,0.06)]">
                     <img
-                      src={product.image}
+                      src={product.images?.[0] || "/placeholder.jpg"}
                       alt={product.name}
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                     />
@@ -67,7 +107,10 @@ const Bestsellers = () => {
                     <p className="text-lg sm:text-base font-light tracking-wide">
                       {product.name}
                     </p>
-                    <p className="text-sm opacity-80">{product.price}</p>
+                    <p className="text-sm opacity-80">
+                      {" "}
+                      ₹{product.discounted_price?.toLocaleString("en-IN")}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>

@@ -26,7 +26,7 @@ const ModelShowcase = () => {
         centeredSlides
         loop
         autoplay={{
-          delay: 200,
+          delay: 600,
           disableOnInteraction: false,
         }}
         breakpoints={{

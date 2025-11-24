@@ -34,12 +34,6 @@ const Footer = () => {
             Shop
           </a>
           <a
-            href="/bestsellers"
-            className="hover:text-white transition-all duration-200"
-          >
-            Bestsellers
-          </a>
-          <a
             href="/about"
             className="hover:text-white transition-all duration-200"
           >
