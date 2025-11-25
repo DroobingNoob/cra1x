@@ -2,4 +2,4 @@
 
 // export const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://mitzi-purehearted-delila.ngrok-free.dev" || "http://localhost:5000";
 
-export const BASE_URL =  "https://mitzi-purehearted-delila.ngrok-free.dev"
+export const BASE_URL =  "https://associate-quick-arrested-surplus.trycloudflare.com"
