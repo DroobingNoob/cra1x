@@ -29,7 +29,7 @@ const ManageOrdersPage = () => {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${BASE_URL}/api/orders/all`, {
+        const res = await fetch(`${BASE_URL}/orders/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -340,7 +340,7 @@ const ManageOrdersPage = () => {
                     try {
                       const token = localStorage.getItem("token");
                       const res = await fetch(
-                        `${BASE_URL}/api/orders/${selectedOrder._id}/status`,
+                        `${BASE_URL}/orders/${selectedOrder._id}/status`,
                         {
                           method: "PUT",
                           headers: {

@@ -12,7 +12,7 @@ const MessagesPage = () => {
     const load = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`${BASE_URL}/api/messages`, {
+        const res = await axios.get(`${BASE_URL}/messages`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);

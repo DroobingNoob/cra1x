@@ -13,7 +13,7 @@ const UserDetailsModal = ({ user, onClose }) => {
     const fetchDetails = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${BASE_URL}/api/auth/${user.id}`, {
+        const res = await fetch(`${BASE_URL}/auth/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

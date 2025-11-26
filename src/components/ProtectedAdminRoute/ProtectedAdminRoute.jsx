@@ -19,7 +19,7 @@ const ProtectedAdminRoute = ({ children }) => {
           return;
         }
 
-        const { data } = await axios.get(`${BASE_URL}/api/auth/check-admin`, {
+        const { data } = await axios.get(`${BASE_URL}/auth/check-admin`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

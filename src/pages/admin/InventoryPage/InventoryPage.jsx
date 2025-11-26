@@ -10,7 +10,7 @@ const InventoryPage = () => {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${BASE_URL}/api/products`, {
+        const res = await fetch(`${BASE_URL}/products`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

@@ -33,7 +33,7 @@ const Bestsellers = () => {
   useEffect(() => {
     const fetchBestsellers = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/api/products`);
+        const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
 
         // filter only products with bestseller: true

@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       const token = tokenParam || localStorage.getItem("token");
       if (!token) return;
 
-      const res = await fetch(`${BASE_URL}/api/cart`, {
+      const res = await fetch(`${BASE_URL}/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      await fetch(`${BASE_URL}/api/cart/${productId}`, {
+      await fetch(`${BASE_URL}/cart/${productId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -129,7 +129,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      await fetch(`${BASE_URL}/api/cart/${productId}`, {
+      await fetch(`${BASE_URL}/cart/${productId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -147,7 +147,7 @@ export const AuthProvider = ({ children }) => {
       const token = tokenParam || localStorage.getItem("token");
       if (!token) return;
 
-      const res = await fetch(`${BASE_URL}/api/wishlist`, {
+      const res = await fetch(`${BASE_URL}/wishlist`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -176,7 +176,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      await fetch(`${BASE_URL}/api/wishlist/add`, {
+      await fetch(`${BASE_URL}/wishlist/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -198,7 +198,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      await fetch(`${BASE_URL}/api/wishlist/${itemId}`, {
+      await fetch(`${BASE_URL}/wishlist/${itemId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

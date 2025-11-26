@@ -31,13 +31,13 @@ const LoginModal = ({ onClose }) => {
       const fetchData = async () => {
         try {
           const [userRes, cartRes, wishlistRes] = await Promise.all([
-            fetch(`${BASE_URL}/api/auth/me`, {
+            fetch(`${BASE_URL}/auth/me`, {
               headers: { Authorization: `Bearer ${token}` },
             }),
-            fetch(`${BASE_URL}/api/cart`, {
+            fetch(`${BASE_URL}/cart`, {
               headers: { Authorization: `Bearer ${token}` },
             }),
-            fetch(`${BASE_URL}/api/wishlist`, {
+            fetch(`${BASE_URL}/wishlist`, {
               headers: { Authorization: `Bearer ${token}` },
             }),
           ]);

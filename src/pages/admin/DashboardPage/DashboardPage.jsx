@@ -30,7 +30,7 @@ const DashboardPage = ({ setActiveTab }) => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/api/admin/stats`, {
+        const res = await fetch(`${BASE_URL}/admin/stats`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

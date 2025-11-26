@@ -37,7 +37,7 @@ const Contact = () => {
     setError("");
 
     try {
-      const res = await fetch(`${BASE_URL}/api/messages`, {
+      const res = await fetch(`${BASE_URL}/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

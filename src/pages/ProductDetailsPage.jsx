@@ -17,7 +17,7 @@ const ProductDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_URL = `${BASE_URL}/api/products/${id}`;
+  const API_URL = `${BASE_URL}/products/${id}`;
 
   const isInWishlist = (product) => {
     if (!product) return false;
@@ -51,7 +51,7 @@ const ProductDetailsPage = () => {
       const quantity = Number(
         document.querySelector("input[type=number]").value
       );
-      const res = await fetch(`${BASE_URL}/api/cart/add`, {
+      const res = await fetch(`${BASE_URL}/cart/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const ProductDetailsPage = () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return toast.error("Please log in to add to Wishlist.");
-      const res = await fetch(`${BASE_URL}/api/wishlist/add`, {
+      const res = await fetch(`${BASE_URL}/wishlist/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

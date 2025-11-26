@@ -24,7 +24,7 @@ const CartPage = () => {
 
   const fetchCoupons = async () => {
     try {
-      const res = await fetch(`${BASE_URL}/api/coupons`);
+      const res = await fetch(`${BASE_URL}/coupons`);
       const data = await res.json();
       setCoupons(data);
     } catch (error) {}
@@ -64,7 +64,7 @@ const CartPage = () => {
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/api/coupons/verify`, {
+      const res = await fetch(`${BASE_URL}/coupons/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -121,7 +121,7 @@ const CartPage = () => {
       // Revalidate the coupon on server (optional but secure)
       let verifiedCoupon = null;
       if (payload.couponCode) {
-        const res = await fetch(`${BASE_URL}/api/coupons/verify`, {
+        const res = await fetch(`${BASE_URL}/coupons/verify`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),

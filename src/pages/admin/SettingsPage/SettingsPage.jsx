@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { motion, AnimatePresence } from "framer-motion";
 import { BASE_URL } from "../../../config/config";
 
-const API_URL = `${BASE_URL}/api/coupons`;
+const API_URL = `${BASE_URL}/coupons`;
 
 const SettingsPage = () => {
   const [coupons, setCoupons] = useState([]);

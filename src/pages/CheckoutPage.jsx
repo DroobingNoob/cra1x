@@ -142,7 +142,7 @@ const CheckoutPage = () => {
           const token = localStorage.getItem("token");
 
           // ✅ Step 2: Save order to backend
-          const orderRes = await fetch(`${BASE_URL}/api/orders/create`, {
+          const orderRes = await fetch(`${BASE_URL}/orders/create`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -158,17 +158,14 @@ const CheckoutPage = () => {
           // ✅ Step 3: Update product stock in backend
           await Promise.all(
             cartItems.map((item) =>
-              fetch(
-                `${BASE_URL}/api/products/${item.productId}/decrement-stock`,
-                {
-                  method: "PATCH",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                  },
-                  body: JSON.stringify({ quantity: item.quantity }),
-                }
-              )
+              fetch(`${BASE_URL}/products/${item.productId}/decrement-stock`, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ quantity: item.quantity }),
+              })
             )
           );
 

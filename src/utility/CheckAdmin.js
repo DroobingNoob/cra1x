@@ -12,7 +12,7 @@ const useAdminCheck = () => {
       if (!token) return;
 
       try {
-        const { data } = await axios.get(`${BASE_URL}/api/auth/check-admin`, {
+        const { data } = await axios.get(`${BASE_URL}/auth/check-admin`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (data.isAdmin) setIsAdmin(true);

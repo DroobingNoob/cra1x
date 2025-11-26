@@ -40,7 +40,7 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${BASE_URL}/api/products`);
+        const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
         setProducts(data);
       } catch (err) {
@@ -63,7 +63,7 @@ const ProductsPage = () => {
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/api/wishlist/add`, {
+      const res = await fetch(`${BASE_URL}/wishlist/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const ProductsPage = () => {
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/api/cart/add`, {
+      const res = await fetch(`${BASE_URL}/cart/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

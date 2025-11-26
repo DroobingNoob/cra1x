@@ -7,7 +7,7 @@ import { BASE_URL } from "../../../config/config";
 import DeleteConfirmModal from "../../../components/DeleteConfirmModal/DeleteConfirmModal";
 
 const categories = ["Keychain", "Grillz", "Chromeos", "Bags", "Headphones"];
-const API_URL = `${BASE_URL}/api/products`;
+const API_URL = `${BASE_URL}/products`;
 
 const ManageProductsPage = () => {
   const [products, setProducts] = useState([]);
