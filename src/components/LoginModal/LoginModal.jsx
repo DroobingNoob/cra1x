@@ -17,7 +17,7 @@ const LoginModal = ({ onClose }) => {
 
   const navigate = useNavigate();
   const handleGoogleLogin = () => {
-    window.location.href = `${BASE_URL}/auth/google`;
+    window.location.href = `${BASE_URL}/api/auth/google`;
   };
 
   useEffect(() => {
