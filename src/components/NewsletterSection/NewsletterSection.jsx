@@ -34,12 +34,11 @@ const NewsletterSection = () => {
 
       if (!res.ok) {
         toast.error(data.message || "Subscription failed. Try again.");
-        setSuccess("");
         return;
       }
 
       // Success UI
-      setSuccess("You're in! Welcome to the Coven. 🖤");
+
       toast.success("Subscribed to newsletter successfully!");
       setEmail("");
     } catch (err) {
