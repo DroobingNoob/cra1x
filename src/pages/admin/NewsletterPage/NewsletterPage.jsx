@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Mail, Copy, Loader2, Search } from "lucide-react";
+import { Mail, Copy, Loader2, Search, Trash } from "lucide-react";
 import { BASE_URL } from "../../../config/config";
+import { toast } from "react-toastify";
 
 const NewsletterPage = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -8,6 +9,7 @@ const NewsletterPage = () => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
+  const [copiedId, setCopiedId] = useState(null);
 
   useEffect(() => {
     const fetchSubscribers = async () => {
@@ -39,8 +41,42 @@ const NewsletterPage = () => {
     setFiltered(filteredList);
   };
 
-  const copyEmail = (email) => {
+  const copyEmail = (id, email) => {
     navigator.clipboard.writeText(email);
+    setCopiedId(id); // show tick
+    setTimeout(() => setCopiedId(null), 1000);
+    toast.success("Copied to clipboard!");
+  };
+
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Delete this email?");
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${BASE_URL}/newsletter/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message || "Failed to delete.");
+        return;
+      }
+
+      toast.success("Email deleted!");
+
+      // update UI
+      const updated = subscribers.filter((sub) => sub._id !== id);
+      setSubscribers(updated);
+      setFiltered(updated);
+    } catch (err) {
+      toast.error("Something went wrong.");
+    }
   };
 
   if (loading)
@@ -109,10 +145,23 @@ const NewsletterPage = () => {
                   </td>
                   <td className="px-4 py-3">
                     <button
-                      onClick={() => copyEmail(sub.email)}
+                      onClick={() => copyEmail(sub._id, sub.email)}
                       className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition"
                     >
-                      <Copy size={16} /> Copy
+                      {copiedId === sub._id ? (
+                        <span className="text-green-400 transition-transform scale-110">
+                          ✔
+                        </span>
+                      ) : (
+                        <Copy size={16} />
+                      )}
+                      {copiedId === sub._id ? "Copied!" : "Copy"}
+                    </button>
+                    <button
+                      onClick={() => handleDelete(sub._id)}
+                      className="flex items-center gap-2 text-red-400 hover:text-red-300 transition"
+                    >
+                      <Trash size={16} /> Delete
                     </button>
                   </td>
                 </tr>
