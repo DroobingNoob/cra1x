@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../config/config";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
