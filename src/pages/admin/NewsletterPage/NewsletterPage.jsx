@@ -18,8 +18,9 @@ const NewsletterPage = () => {
         });
         const data = await res.json();
 
-        setSubscribers(data.subscribers);
-        setFiltered(data.subscribers);
+        setSubscribers(data.emails || []);
+        setFiltered(data.emails || []);
+
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch emails.");
