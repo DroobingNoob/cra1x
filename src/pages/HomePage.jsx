@@ -7,6 +7,7 @@ import MobileBottomBar from "../components/MobileBottomBar/MobileBottomBar";
 import FAQ from "../components/FAQ/FAQ";
 import InstagramSection from "../components/InstagramSection/InstagramSection";
 import ModelShowcase from "../components/ModelShowcase/ModelShowcase";
+import NewsletterSection from "../components/NewsletterSection/NewsletterSection";
 
 const HomePage = () => {
   return (
@@ -20,6 +21,7 @@ const HomePage = () => {
       <ModelShowcase />
       <FAQ />
       <InstagramSection />
+      <NewsletterSection />
       <div>
         <MobileBottomBar />
       </div>

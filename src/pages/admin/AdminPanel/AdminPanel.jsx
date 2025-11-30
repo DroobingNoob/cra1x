@@ -11,6 +11,7 @@ import {
   ArrowLeft,
   StepBack,
   MessageSquareHeart,
+  Newspaper,
 } from "lucide-react";
 import UsersPage from "../UsersPage/ManageUsersPage";
 import ManageProductsPage from "../ManageProductsPage/ManageProductsPage";
@@ -20,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import ManageOrdersPage from "../OrdersPage/ManageOrdersPage";
 import DashboardPage from "../DashboardPage/DashboardPage";
 import MessagesPage from "../MessagesPage/MessagesPage";
+import NewsletterPage from "../NewsletterPage/NewsletterPage";
 
 const tabs = [
   { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
@@ -29,6 +31,7 @@ const tabs = [
   { id: "inventory", name: "Inventory", icon: Boxes },
   { id: "messages", name: "Messages", icon: MessageSquareHeart },
   { id: "settings", name: "Settings", icon: Settings },
+  { id: "newsletter", name: "Newsletter Subscribers", icon: Newspaper },
 ];
 
 const AdminPanel = () => {
@@ -53,6 +56,8 @@ const AdminPanel = () => {
         return <DashboardPage setActiveTab={setActiveTab} />;
       case "messages":
         return <MessagesPage />;
+      case "newsletter":
+        return <NewsletterPage />;
       default:
         return (
           <div className="flex flex-col items-center justify-center h-full text-gray-400 text-lg animate-fadeIn">

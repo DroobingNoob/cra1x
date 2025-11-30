@@ -6,3 +6,58 @@
  font-family: 'Playfair Display', serif;
   letter-spacing: 0.08em;
 }
+
+.logo-3d-container {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+}
+
+/* Mobile only */
+@media (max-width: 480px) {
+  .logo-3d-container {
+    width: 80px;
+    height: 80px;
+  }
+}
+.logo-3d-object {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: spinY 4s linear infinite;
+  position: relative;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(0deg) translateZ(3px);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(3px);
+}
+
+/* Black thickness but WITHOUT rounding */
+.side {
+  position: absolute;
+  inset: 0;
+  // background: #000;
+  transform: translateZ(0);
+  filter: brightness(0.4);
+  opacity: 1;
+}
+@keyframes spinY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}

@@ -11,6 +11,8 @@ import model5 from "../../assets/images/model5.JPG";
 import model6 from "../../assets/images/model6.JPG";
 import model7 from "../../assets/images/model7.PNG";
 import model8 from "../../assets/images/model8.JPG";
+import model13 from "../../assets/images/model13.jpg";
+import model14 from "../../assets/images/model14.jpg";
 
 const ModelShowcase = () => {
   return (
@@ -26,7 +28,7 @@ const ModelShowcase = () => {
         centeredSlides
         loop
         autoplay={{
-          delay: 600,
+          delay: 1000,
           disableOnInteraction: false,
         }}
         breakpoints={{
@@ -35,18 +37,20 @@ const ModelShowcase = () => {
         }}
         className="max-w-[95%] md:max-w-6xl mx-auto"
       >
-        {[model1, model2, model5, model6, model7].map((model, i) => (
-          <SwiperSlide key={i}>
-            <div className="relative group rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(0,0,0,0.5)]">
-              <img
-                src={model}
-                alt={`model-${i}`}
-                className="w-full h-[50vh] md:h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.7]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500"></div>
-            </div>
-          </SwiperSlide>
-        ))}
+        {[model1, model2, model5, model6, model7, model13, model14].map(
+          (model, i) => (
+            <SwiperSlide key={i}>
+              <div className="relative group rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(0,0,0,0.5)]">
+                <img
+                  src={model}
+                  alt={`model-${i}`}
+                  className="w-full h-[50vh] md:h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.7]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500"></div>
+              </div>
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </div>
   );

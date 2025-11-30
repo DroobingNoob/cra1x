@@ -9,7 +9,7 @@ import {
   LogOut,
   User,
 } from "lucide-react";
-import cra1x from "../../assets/images/cra1x.jpg";
+import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LoginModal from "../LoginModal/LoginModal";
@@ -77,14 +77,13 @@ const Navbar = () => {
 
   // Hide banner on scroll
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 50)
-        setHideBanner(true);
-      else setHideBanner(false);
-      lastScrollY = window.scrollY;
+      if (window.scrollY === 0) setHideBanner(false);
+      else setHideBanner(true);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -93,11 +92,14 @@ const Navbar = () => {
       {/* Banner */}
       <div
         ref={bannerRef}
-        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-40 transition-transform duration-500 ease-in-out ${
-          hideBanner
-            ? "-translate-y-full opacity-0"
-            : "translate-y-0 opacity-100"
-        }`}
+        className={`fixed top-0 left-0 w-full text-center text-sm font-mono text-white py-3 bg-black z-40 
+  transition-all duration-500 
+  ease-[cubic-bezier(0.22,1,0.36,1)] 
+  ${
+    hideBanner
+      ? "-translate-y-full opacity-0 scale-[0.97]"
+      : "translate-y-0 opacity-100 scale-100"
+  }`}
       >
         Get <span className="font-bold">5% off</span> when you buy 3 products
         using <span className="font-bold">CRA1X</span>
@@ -105,8 +107,16 @@ const Navbar = () => {
 
       {/* Navbar */}
       <nav
-        className={`fixed w-full left-0 bg-black text-white border-b border-gray-800 z-50 transition-all duration-500 ease-in-out`}
-        style={{ top: hideBanner ? 0 : bannerHeight }}
+        className="bg-black/40          
+backdrop-blur-xl         
+border-b border-white/10  fixed w-full left-0 bg-black text-white border-b border-gray-800 z-50 
+transition-transform duration-500 
+ease-[cubic-bezier(0.22,1,0.36,1)] 
+delay-75 pt-4"
+        style={{
+          top: hideBanner ? 0 : bannerHeight,
+          transitionDelay: hideBanner ? "0ms" : "120ms",
+        }}
       >
         {/* Main Row */}
         <div className="flex justify-between items-center px-5 py-4 md:px-10 relative">
@@ -119,7 +129,7 @@ const Navbar = () => {
           </button>
 
           {/* Center: Logo */}
-          <Link
+          {/* <Link
             to="/"
             className="absolute left-1/2 -translate-x-1/2 cursor-pointer"
           >
@@ -128,6 +138,18 @@ const Navbar = () => {
               alt="Logo"
               className="w-12 opacity-100 hover:opacity-90 transition"
             />
+          </Link> */}
+          <Link
+            to="/"
+            className="absolute left-1/2 -translate-x-1/2 cursor-pointer"
+          >
+            <div className="logo-3d-container">
+              <div className="logo-3d-object">
+                <img src={cra1x} className="face front" alt="logo" />
+                <img src={cra1x} className="face back" alt="logo" />
+                <div className="side"></div>
+              </div>
+            </div>
           </Link>
 
           {/* Right: Wishlist + Cart + Account (hidden on mobile) */}
