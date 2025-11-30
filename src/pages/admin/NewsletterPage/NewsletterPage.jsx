@@ -12,7 +12,10 @@ const NewsletterPage = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/newsletter/all`);
+        const token = localStorage.getItem("token");
+        const res = await fetch(`${BASE_URL}/newsletter/all`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         const data = await res.json();
 
         setSubscribers(data.subscribers);
