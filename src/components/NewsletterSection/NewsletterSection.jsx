@@ -42,7 +42,7 @@ const NewsletterSection = () => {
       toast.success("Subscribed to newsletter successfully!");
       setEmail("");
     } catch (err) {
-      toast.error(data.message || "Subscription failed. Try again.");
+      toast.error("Subscription failed. Try again.");
     }
   };
 
