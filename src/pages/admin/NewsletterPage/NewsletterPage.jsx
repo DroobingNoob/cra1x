@@ -12,7 +12,7 @@ const NewsletterPage = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/newsletter`);
+        const res = await fetch(`${BASE_URL}/newsletter/all`);
         const data = await res.json();
 
         setSubscribers(data.subscribers);
