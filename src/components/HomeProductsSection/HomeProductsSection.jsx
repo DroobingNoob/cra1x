@@ -88,6 +88,10 @@ const HomeProductsSection = () => {
       <p className="text-center text-gray-500 mt-20">Loading products...</p>
     );
 
+  if (!loading && Object.keys(productsByCategory).length === 0) {
+    return null;
+  }
+
   return (
     <section className="text-white pt-24 pb-10 px-4 md:px-6 bg-zinc-950">
       {/* Match the container width with Bestsellers section */}
