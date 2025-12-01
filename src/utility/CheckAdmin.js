@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config/config";
+import { useAuth } from "../context/AuthContext";
 
 const useAdminCheck = () => {
+  const { user } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
