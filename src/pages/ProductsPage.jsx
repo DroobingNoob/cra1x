@@ -22,17 +22,8 @@ const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const {
-    setUser,
-    cartItems,
-    setCartItems,
-    setCartCount,
-    wishlistItems,
-    setWishlistItems,
-    setWishlistCount,
-    fetchUserCart,
-    fetchUserWishlist,
-  } = useAuth();
+  const { cartItems, wishlistItems, fetchUserCart, fetchUserWishlist } =
+    useAuth();
 
   const token = localStorage.getItem("token");
 
@@ -42,8 +33,9 @@ const ProductsPage = () => {
       try {
         const res = await fetch(`${BASE_URL}/products`);
         const data = await res.json();
-        setProducts(data);
+        setProducts(data.filter((p) => p.visible !== false));
       } catch (err) {
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -52,15 +44,9 @@ const ProductsPage = () => {
   }, []);
 
   const handleAddToWishlist = async (productId) => {
-    if (!token) {
-      toast.error("Please login to add items to wishlist");
-      return;
-    }
-
-    if (wishlistItems.some((item) => item.productId === productId)) {
-      toast.info("Already in wishlist");
-      return;
-    }
+    if (!token) return toast.error("Please login to add items to wishlist");
+    if (wishlistItems.some((item) => item.productId === productId))
+      return toast.info("Already in wishlist");
 
     try {
       const res = await fetch(`${BASE_URL}/wishlist/add`, {
@@ -71,26 +57,17 @@ const ProductsPage = () => {
         },
         body: JSON.stringify({ productId }),
       });
-
-      const data = await res.json();
       if (res.ok) {
-        // setWishlistItems((prev) => [...prev, productId]);
-        // setWishlistCount((prev) => prev + 1);
         await fetchUserWishlist();
         toast.success("Added to wishlist");
-      } else {
-        toast.error("Failed to add to wishlist");
-      }
-    } catch (err) {
+      } else toast.error("Failed to add to wishlist");
+    } catch {
       toast.error("Failed to add to wishlist");
     }
   };
 
   const handleAddToCart = async (productId) => {
-    if (!token) {
-      toast.error("Please login to add items to cart");
-      return;
-    }
+    if (!token) return toast.error("Please login to add items to cart");
 
     try {
       const res = await fetch(`${BASE_URL}/cart/add`, {
@@ -101,17 +78,11 @@ const ProductsPage = () => {
         },
         body: JSON.stringify({ productId, quantity: 1 }),
       });
-
-      const data = await res.json();
       if (res.ok) {
-        // setCartItems((prev) => [...prev, productId]);
-        // setCartCount((prev) => prev + 1);
         await fetchUserCart();
         toast.success("Added to cart");
-      } else {
-        toast.error("Failed to add to cart");
-      }
-    } catch (err) {
+      } else toast.error("Failed to add to cart");
+    } catch {
       toast.error("Failed to add to cart");
     }
   };
@@ -148,7 +119,6 @@ const ProductsPage = () => {
         {/* Search + Filters */}
         <div className="sticky top-20 z-30 bg-zinc-950/80 backdrop-blur-lg border border-zinc-800 rounded-xl p-4 mb-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            {/* Search Bar */}
             <div className="relative w-full md:w-1/3">
               <Search
                 className="absolute left-4 top-3.5 text-gray-400"
@@ -162,8 +132,6 @@ const ProductsPage = () => {
                 className="w-full bg-zinc-900 border border-zinc-800 rounded-lg pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-gray-300 placeholder-gray-500 transition-all"
               />
             </div>
-
-            {/* Sort Dropdown */}
             <select
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
@@ -196,7 +164,7 @@ const ProductsPage = () => {
 
         {/* Product Grid */}
         {loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
@@ -205,43 +173,28 @@ const ProductsPage = () => {
             ))}
           </div>
         ) : filteredProducts.length > 0 ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"
-          >
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {filteredProducts.map((product) => (
               <motion.div
                 key={product._id}
                 onClick={() => navigate(`/product/${product._id}`)}
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="group relative rounded-3xl overflow-hidden border border-zinc-800 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black hover:border-gray-600 transition-all duration-500 cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                className="group relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[340px] mx-auto cursor-pointer pb-6"
               >
-                {/* Image Wrapper */}
-                <div className="relative aspect-square overflow-hidden">
-                  {/* Product Image */}
+                <div className="relative aspect-square overflow-hidden rounded-2xl">
                   <motion.img
                     src={product.images[0]}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-
-                  {/* Shimmer Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-
-                  {/* Floating Icons */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToWishlist(product._id);
                       }}
-                      className="p-2.5 rounded-full bg-zinc-900/70 border border-zinc-700 hover:bg-white hover:text-black transition-all duration-300 shadow-lg"
+                      className="group/icon p-2 rounded-full bg-black/50 backdrop-blur border border-zinc-700 hover:bg-white shadow"
                     >
                       <Heart
                         size={16}
@@ -250,7 +203,7 @@ const ProductsPage = () => {
                             (item) => item.productId === product._id
                           )
                             ? "text-red-500"
-                            : "text-gray-300"
+                            : "text-white group-hover/icon:text-black"
                         }
                       />
                     </button>
@@ -260,9 +213,12 @@ const ProductsPage = () => {
                         e.stopPropagation();
                         navigate(`/product/${product._id}`);
                       }}
-                      className="p-2.5 rounded-full bg-zinc-900/70 border border-zinc-700 hover:bg-white hover:text-black transition-all duration-300 shadow-lg"
+                      className="group/icon p-2 rounded-full bg-black/50 backdrop-blur border border-zinc-700 hover:bg-white shadow"
                     >
-                      <Eye size={16} />
+                      <Eye
+                        size={16}
+                        className="text-white group-hover/icon:text-black"
+                      />
                     </button>
 
                     <button
@@ -270,7 +226,7 @@ const ProductsPage = () => {
                         e.stopPropagation();
                         handleAddToCart(product._id);
                       }}
-                      className="p-2.5 rounded-full bg-zinc-900/70 border border-zinc-700 hover:bg-white hover:text-black transition-all duration-300 shadow-lg"
+                      className="group/icon p-2 rounded-full bg-black/50 backdrop-blur border border-zinc-700 hover:bg-white shadow"
                     >
                       <ShoppingCart
                         size={16}
@@ -279,22 +235,18 @@ const ProductsPage = () => {
                             (item) => item.productId === product._id
                           )
                             ? "text-green-400"
-                            : "text-gray-300"
+                            : "text-white group-hover/icon:text-black"
                         }
                       />
                     </button>
                   </div>
                 </div>
-                {/* </div> */}
 
-                {/* Info Section */}
-                <div className="p-5 text-center">
-                  <h3 className="font-semibold text-lg tracking-wide mb-1 group-hover:text-white transition-colors">
+                <div className="pt-3 text-center">
+                  <h3 className="font-medium text-lg tracking-wide truncate group-hover:underline transition-colors">
                     {product.name}
                   </h3>
-
-                  {/* Price Section */}
-                  <div className="flex justify-center items-center gap-2 text-sm">
+                  <div className="flex justify-center items-center gap-2 mt-1 text-sm">
                     <span className="text-gray-300 font-medium">
                       ₹{product.discounted_price.toLocaleString()}
                     </span>
@@ -305,17 +257,15 @@ const ProductsPage = () => {
                         </span>
                       )}
                   </div>
-
-                  {/* Category or Bestseller Tag */}
                   {product.bestseller && (
-                    <span className="inline-block mt-2 text-[10px] uppercase tracking-wider text-gray-400 bg-zinc-800 px-2 py-1 rounded-full">
+                    <span className="inline-block mt-2 text-[10px] uppercase tracking-wider text-gray-400 bg-zinc-800/60 px-2 py-1 rounded-full backdrop-blur">
                       Bestseller
                     </span>
                   )}
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         ) : (
           <p className="text-gray-500 text-center mt-10">No products found.</p>
         )}

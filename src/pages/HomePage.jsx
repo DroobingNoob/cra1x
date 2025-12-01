@@ -8,6 +8,7 @@ import FAQ from "../components/FAQ/FAQ";
 import InstagramSection from "../components/InstagramSection/InstagramSection";
 import ModelShowcase from "../components/ModelShowcase/ModelShowcase";
 import NewsletterSection from "../components/NewsletterSection/NewsletterSection";
+import HomeProductsSection from "../components/HomeProductsSection/HomeProductsSection";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       </div> */}
       {/* <div className="mt-[100px] sm:mt-[120px] md:mt-[140px]"> */}
       <ShopExclusive />
+      <HomeProductsSection />
       <Bestsellers />
       <ModelShowcase />
       <FAQ />

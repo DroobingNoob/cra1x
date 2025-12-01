@@ -33,9 +33,11 @@ const ModelShowcase = () => {
         }}
         breakpoints={{
           768: { slidesPerView: 2.2 },
-          1024: { slidesPerView: 2.5 },
+          // 1024: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 },
         }}
-        className="max-w-[95%] md:max-w-6xl mx-auto"
+        // className="max-w-[95%] md:max-w-6xl mx-auto"
+        className="w-full max-w-[1600px] mx-auto px-4"
       >
         {[model1, model2, model5, model6, model7, model13, model14].map(
           (model, i) => (
