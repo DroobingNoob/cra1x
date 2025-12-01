@@ -11,7 +11,10 @@ const useAdminCheck = () => {
   useEffect(() => {
     const checkAdmin = async () => {
       const token = localStorage.getItem("token");
-      if (!token) return;
+      if (!token || !user) {
+        setIsAdmin(false); // reset isAdmin when logged out
+        return;
+      }
 
       try {
         const { data } = await axios.get(`${BASE_URL}/auth/check-admin`, {
