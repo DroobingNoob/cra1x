@@ -22,7 +22,7 @@ const useAdminCheck = () => {
     };
 
     checkAdmin();
-  }, []);
+  }, [user]);
 
   return isAdmin;
 };
