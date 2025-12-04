@@ -95,15 +95,14 @@ const HomeProductsSection = () => {
   return (
     <section className="text-white pt-24 pb-10 px-4 md:px-6 bg-zinc-950">
       {/* Match the container width with Bestsellers section */}
-      <div className="w-full max-w-[1600px] mx-auto flex flex-col gap-20">
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col gap-10">
         {/* -------------------- MAIN HEADING -------------------- */}
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-black goth-font tracking-wide">
             Explore Our Collection
           </h1>
           <p className="text-gray-400 mt-3 text-sm md:text-base max-w-xl mx-auto">
-            Discover products curated by category — everything crafted to match
-            your aesthetic.
+            Discover products curated by category
           </p>
         </div>
 
@@ -193,7 +192,7 @@ const HomeProductsSection = () => {
                   {/* Product Info */}
                   <div className="pt-3 text-center">
                     <h3 className="font-medium text-lg tracking-wide truncate group-hover:underline transition-colors">
-                      {product.name}
+                      ★ {product.name} ★
                     </h3>
 
                     <div className="flex justify-center items-center gap-2 mt-1 text-sm">

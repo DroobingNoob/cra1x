@@ -1,0 +1,32 @@
+/* Logo wobble */
+@keyframes streetVibe {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.03) rotate(-1deg); }
+  70% { transform: scale(0.98) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-streetVibe {
+  animation: streetVibe 1.2s infinite ease-in-out;
+}
+
+/* Smooth slide-up reveal */
+@keyframes smoothSlideUp {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+}
+
+.loader-slide-up {
+  animation: smoothSlideUp 0.9s ease-in forwards; /* consistent slide */
+}
+
+/* Wrapper ensures loader sits on top */
+.loader-wrapper {
+  transition: opacity 0.3s;
+}

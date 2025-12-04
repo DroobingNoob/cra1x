@@ -136,7 +136,7 @@ const Bestsellers = () => {
             spaceBetween={20}
             slidesPerView={2}
             breakpoints={{
-              768: { slidesPerView: 4 },
+              768: { slidesPerView: 3 },
               1024: { slidesPerView: 4 },
             }}
             pagination={{
@@ -245,7 +245,7 @@ const Bestsellers = () => {
                       {product.name}
                     </h3> */}
                     <h3 className="font-medium text-base md:text-lg lg:text-xl tracking-wide truncate group-hover:underline transition-colors">
-                      {product.name}
+                      ★ {product.name} ★
                     </h3>
 
                     {/* <p className="text-sm text-gray-300 mt-1">
@@ -288,7 +288,7 @@ const Bestsellers = () => {
           `}</style>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-3">
           <button
             onClick={() => navigate("/products")}
             className="px-8 py-2 border border-white text-sm tracking-wider hover:bg-white hover:text-black transition-colors duration-300"

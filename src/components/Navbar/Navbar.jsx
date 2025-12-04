@@ -210,10 +210,12 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Fullscreen Menu */}
+      {/* Mobile Fullscreen Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-full z-[999] bg-black/95 backdrop-blur-sm text-white flex flex-col items-center justify-center space-y-4 text-lg font-mono transition-all duration-500 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`mobile-menu fixed top-0 right-0 h-full w-full z-[999]
+    bg-black/95 backdrop-blur-sm text-white flex flex-col items-center
+    justify-center text-lg font-mono
+    ${menuOpen ? "menu-open" : "menu-closed"}`}
       >
         <button
           onClick={toggleMenu}
@@ -223,44 +225,33 @@ const Navbar = () => {
           <X size={26} />
         </button>
 
-        <Link to="/" onClick={toggleMenu} className="hover:text-gray-400">
-          Home
-        </Link>
-        {user && (
-          <Link
-            to="/my-orders"
-            onClick={toggleMenu}
-            className="hover:text-gray-400"
-          >
-            My Orders
+        <div className="menu-list flex flex-col items-center space-y-4">
+          <Link to="/" onClick={toggleMenu} className="menu-item">
+            Home
           </Link>
-        )}
-        {isAdmin && (
-          <Link
-            to="/admin"
-            onClick={toggleMenu}
-            className="hover:text-gray-400"
-          >
-            Admin
+
+          {user && (
+            <Link to="/my-orders" onClick={toggleMenu} className="menu-item">
+              My Orders
+            </Link>
+          )}
+
+          {isAdmin && (
+            <Link to="/admin" onClick={toggleMenu} className="menu-item">
+              Admin
+            </Link>
+          )}
+
+          <Link to="/products" onClick={toggleMenu} className="menu-item">
+            Products
           </Link>
-        )}
-        <Link
-          to="/products"
-          onClick={toggleMenu}
-          className="hover:text-gray-400"
-        >
-          Products
-        </Link>
-        <Link to="/about" onClick={toggleMenu} className="hover:text-gray-400">
-          About
-        </Link>
-        <Link
-          to="/contact"
-          onClick={toggleMenu}
-          className="hover:text-gray-400"
-        >
-          Contact
-        </Link>
+          <Link to="/about" onClick={toggleMenu} className="menu-item">
+            About
+          </Link>
+          <Link to="/contact" onClick={toggleMenu} className="menu-item">
+            Contact
+          </Link>
+        </div>
       </div>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
