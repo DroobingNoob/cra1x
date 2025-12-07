@@ -118,7 +118,7 @@ const Navbar = () => {
 
           {/* Center: Logo */}
           <Link
-            to="/"
+            to="/home"
             className="absolute left-1/2 -translate-x-1/2 cursor-pointer"
           >
             <div className="logo-3d-container">
@@ -184,7 +184,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex justify-center space-x-10 py-4 text-sm font-mono tracking-wide relative">
-          <Link to="/" className="hover:text-gray-400 transition">
+          <Link to="/home" className="hover:text-gray-400 transition">
             Home
           </Link>
           <Link to="/products" className="hover:text-gray-400 transition">
@@ -200,6 +200,9 @@ const Navbar = () => {
               Admin
             </Link>
           )}
+          <Link to="/cra1x-club" className="hover:text-gray-400 transition">
+            The Club
+          </Link>
           <Link to="/about" className="hover:text-gray-400 transition">
             About
           </Link>
@@ -209,7 +212,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Fullscreen Menu */}
       {/* Mobile Fullscreen Menu */}
       <div
         className={`mobile-menu fixed top-0 right-0 h-full w-full z-[999]
@@ -226,7 +228,7 @@ const Navbar = () => {
         </button>
 
         <div className="menu-list flex flex-col items-center space-y-4">
-          <Link to="/" onClick={toggleMenu} className="menu-item">
+          <Link to="/home" onClick={toggleMenu} className="menu-item">
             Home
           </Link>
 
@@ -244,6 +246,9 @@ const Navbar = () => {
 
           <Link to="/products" onClick={toggleMenu} className="menu-item">
             Products
+          </Link>
+          <Link to="/cra1x-club" onClick={toggleMenu} className="menu-item">
+            The Club
           </Link>
           <Link to="/about" onClick={toggleMenu} className="menu-item">
             About

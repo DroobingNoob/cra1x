@@ -206,7 +206,7 @@ export default function ShopExclusive() {
         <img
           src={cra1x}
           alt="Logo"
-          className="w-60 z-10 lg:w-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]"
+          className="w-60 z-10 lg:w-60 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]"
         />
 
         <p className="uppercase text-[0.9rem] tracking-[0.3em] text-zinc-400 select-none z-10 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]">

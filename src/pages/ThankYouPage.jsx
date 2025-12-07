@@ -74,7 +74,7 @@ const ThankYouPage = () => {
       )}
 
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/home")}
         className="px-8 py-3 bg-blue-600 rounded-xl hover:bg-blue-700 font-semibold transition-colors"
       >
         Continue Shopping

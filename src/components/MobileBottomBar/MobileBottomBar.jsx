@@ -41,7 +41,7 @@ const MobileBottomBar = () => {
     setWishlistCount(0);
     setShowLogoutConfirm(false);
     toast.success("Logged out successfully");
-    navigate("/");
+    navigate("/home");
   };
 
   return (

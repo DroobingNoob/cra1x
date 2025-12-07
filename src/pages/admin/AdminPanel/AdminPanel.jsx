@@ -72,7 +72,7 @@ const AdminPanel = () => {
     <div className="flex flex-col lg:flex-row h-screen bg-zinc-950 text-gray-200 overflow-hidden pt-[2rem] lg:pt-0">
       {/* Back to Site */}
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/home")}
         className="hidden lg:flex items-center gap-2 text-gray-400 hover:text-white absolute top-4 left-4 z-40 transition-colors duration-300"
       >
         <ArrowLeft size={20} /> Back to Site
@@ -131,7 +131,7 @@ const AdminPanel = () => {
             onClick={() => {
               setActiveTab("settings");
               setSidebarOpen(false);
-              navigate("/");
+              navigate("/home");
             }}
             className={`flex items-center gap-3 w-full text-sm font-medium transition-colors ${
               activeTab === "settings"

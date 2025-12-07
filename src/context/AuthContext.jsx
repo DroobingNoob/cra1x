@@ -220,7 +220,7 @@ export const AuthProvider = ({ children }) => {
     setWishlistItems([]);
     setWishlistCount(0);
     toast.warn("Session expired — please log in again");
-    window.location.href = "/";
+    window.location.href = "/home";
   };
 
   return (

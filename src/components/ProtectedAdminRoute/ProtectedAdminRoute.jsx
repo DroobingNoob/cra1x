@@ -15,7 +15,7 @@ const ProtectedAdminRoute = ({ children }) => {
         const token = localStorage.getItem("token");
         if (!token) {
           toast.error("Please login first");
-          navigate("/");
+          navigate("/home");
           return;
         }
 
@@ -25,11 +25,11 @@ const ProtectedAdminRoute = ({ children }) => {
 
         if (!data.isAdmin) {
           toast.error("Access denied");
-          navigate("/"); // redirect non-admins to home
+          navigate("/home"); // redirect non-admins to home
         }
       } catch (err) {
         toast.error("Unauthorized or session expired");
-        navigate("/");
+        navigate("/home");
       } finally {
         setLoading(false);
       }
