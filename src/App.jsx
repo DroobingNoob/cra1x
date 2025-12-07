@@ -22,7 +22,7 @@ import MyOrdersPage from "./pages/MyOrdersPage";
 import Loader from "./components/Loader/Loader";
 // import Cra1xClubPage from "./pages/cra1xClubPage";
 import BasePage from "./pages/BasePage";
-import Cra1xClubPage from "./pages/cra1xClubPage";
+import Cra1xClubPage from "./pages/Cra1xClubPage";
 
 const App = () => {
   return (
