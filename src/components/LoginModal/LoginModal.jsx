@@ -53,6 +53,7 @@ const LoginModal = ({ onClose }) => {
           setWishlistItems(wishlistData.items || []);
           setWishlistCount(wishlistData.items?.length || 0);
 
+          toast.success("Login successful!");
           // remove ?token= from URL
           window.history.replaceState({}, document.title, "/");
           window.location.href = "/";
