@@ -220,7 +220,7 @@ export default function ShopExclusive() {
         onClick={() => navigate(`/products`)}
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 160 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 border border-zinc-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 z-40"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 border border-zinc-700 px-8 py-3 uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-300 z-20"
       >
         Enter the Drop
       </motion.button>

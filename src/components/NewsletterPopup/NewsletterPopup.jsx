@@ -5,7 +5,7 @@ import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
 import { BASE_URL } from "../../config/config";
 
 const NewsletterPopup = ({ onOpen }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -103,7 +103,7 @@ const NewsletterPopup = ({ onOpen }) => {
       {/* Modal */}
       <div
         className="
-          relative p-8 w-[90%] max-w-sm rounded-2xl
+          relative p-6.5 w-[100%] max-w-sm rounded-2xl
           bg-gradient-to-b from-zinc-900 to-black
           border border-white/10 shadow-2xl animate-popIn
         "
@@ -176,13 +176,13 @@ const NewsletterPopup = ({ onOpen }) => {
             <h2 className="text-3xl font-black goth-font text-center text-white leading-tight mb-2">
               Join CRA1XB1TCH CLUB
             </h2>
-
+            {/* 
             <h3 className="text-xl font-black goth-font text-center text-white mb-4">
               Get 10% OFF
-            </h3>
+            </h3> */}
 
             <p className="text-gray-300 text-center text-sm mb-6">
-              Subscribe now to unlock your instant discount code.
+              INVITATION TO BE A PART OF US.
             </p>
 
             {/* Email Input */}

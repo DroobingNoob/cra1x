@@ -47,30 +47,40 @@ const MobileBottomBar = () => {
   return (
     <>
       {/* Bottom Bar */}
-      <div className="sm:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-30 flex flex-col items-center">
-        {/* Subtle frosted glass background */}
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-md rounded-full border border-white/10 shadow-md pointer-events-none"></div>
 
-        {/* Icons */}
-        {/* <div className="relative flex justify-around items-center py-2.5 px-5 rounded-full text-white w-full"> */}
-        <div className="relative flex justify-around items-center py-1 px-2 rounded-full text-white w-full">
+      <div
+        className="
+    sm:hidden 
+    fixed bottom-0 left-0 w-full z-30 
+    bg-black/95 backdrop-blur-xl 
+    border-t border-white/10
+    shadow-[0_-4px_20px_rgba(0,0,0,0.6)]
+  "
+      >
+        <div className="flex justify-around items-center z-99999 py-2.5 px-4 text-white">
           {/* Home */}
           <button
             onClick={handleHomeClick}
-            className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
+            className="group flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
           >
-            <Grid className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 w-8 h-8 rounded-xl bg-white/10 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+              <Grid className="relative w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
+            </div>
           </button>
 
           {/* Cart */}
           <button
             onClick={handleCartClick}
-            className="group relative flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
+            className="group relative flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
           >
-            <ShoppingCart className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 w-8 h-8 rounded-xl bg-white/10 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+              <ShoppingCart className="relative w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
+            </div>
 
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 bg-red-500 text-[10px] px-1.5 rounded-full font-semibold">
+              <span className="absolute -top-1 -right-2 bg-red-500 text-[10px] px-1.5 rounded-full font-semibold">
                 {cartCount}
               </span>
             )}
@@ -79,28 +89,37 @@ const MobileBottomBar = () => {
           {/* Wishlist */}
           <button
             onClick={handleWishlistClick}
-            className="group relative flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
+            className="group relative flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
           >
-            <Heart className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+            <div className="relative flex items-center justify-center">
+              <div className="absolute inset-0 w-8 h-8 rounded-xl bg-white/10 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+              <Heart className="relative w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
+            </div>
           </button>
 
           {/* Account / Logout */}
           {user ? (
             <button
               onClick={() => setShowLogoutConfirm(true)}
-              className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
+              className="group flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
             >
-              <LogOut className="w-5 h-5 text-red-300 group-hover:text-red-200 transition-colors" />
-              <span className="text-[11px] text-white/60 mt-0.5">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 w-8 h-8 rounded-xl bg-red-300/20 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+                <LogOut className="relative w-6 h-6 text-red-300 group-hover:text-red-200 transition-colors" />
+              </div>
+              <span className="text-[12px] text-white/60 mt-1">
                 {user?.name?.split(" ")[0]}
               </span>
             </button>
           ) : (
             <button
               onClick={handleAccountClick}
-              className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
+              className="group flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
             >
-              <User className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 w-8 h-8 rounded-xl bg-white/10 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+                <User className="relative w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
+              </div>
             </button>
           )}
         </div>

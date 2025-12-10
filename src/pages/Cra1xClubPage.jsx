@@ -1,5 +1,6 @@
 import React from "react";
 import collage from "../assets/images/collage.jpg";
+import collageold from "../assets/images/collage-old.jpg";
 import NewsletterSection from "../components/NewsletterSection/NewsletterSection";
 
 const Cra1xClubPage = () => {
@@ -9,7 +10,7 @@ const Cra1xClubPage = () => {
         <img
           src={collage}
           alt="Brand Collage"
-          className="w-full object-cover max-h-[70vh] md:max-h-[90vh] select-none"
+          className="w-full object-cover object-center select-none"
         />
       </div>
 
