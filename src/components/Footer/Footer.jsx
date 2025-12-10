@@ -5,7 +5,7 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white px-6 py-12 border-t border-zinc-800 overflow-hidden">
+    <footer className="relative bg-black text-white px-6 py-12 overflow-hidden">
       {/* Ambient Glows */}
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04)_0%,transparent_70%)] blur-[160px]" />

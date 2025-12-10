@@ -100,7 +100,7 @@ const Navbar = () => {
 
       {/* Navbar */}
       <nav
-        className="bg-black/40 backdrop-blur-xl border-b border-white/10 fixed w-full left-0 text-white z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] pt-4"
+        className="bg-black/40 backdrop-blur-xl fixed w-full left-0 text-white z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] pt-4"
         style={{
           top: hideBanner ? 0 : bannerHeight,
           transitionDelay: hideBanner ? "0ms" : "120ms",
@@ -137,6 +137,11 @@ const Navbar = () => {
               className="relative p-2 rounded-full hover:bg-white/10 transition"
             >
               <Heart className="w-5 h-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-[10px] px-1.5 rounded-full font-semibold">
+                  {wishlistCount}
+                </span>
+              )}
             </button>
 
             <button

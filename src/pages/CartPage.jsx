@@ -151,7 +151,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white px-6 py-8">
+    <div className="min-h-screen bg-zinc-950 text-white px-6 py-9">
       {/* Back Button */}
       <button
         onClick={() => navigate(-1)}

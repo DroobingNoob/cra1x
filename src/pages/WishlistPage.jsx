@@ -46,7 +46,7 @@ const WishlistPage = () => {
           {wishlistItems.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col sm:flex-row items-center bg-zinc-900 border border-zinc-800 rounded-2xl p-4 shadow-sm"
+              className="flex flex-col sm:flex-row items-center border border-zinc-800 rounded-2xl p-4 shadow-sm"
             >
               <img
                 src={item.image || "/placeholder.png"}

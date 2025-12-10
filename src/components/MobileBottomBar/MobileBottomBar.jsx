@@ -17,6 +17,7 @@ const MobileBottomBar = () => {
     setCartCount,
     setWishlistItems,
     setWishlistCount,
+    wishlistCount,
   } = useAuth();
 
   const handleHomeClick = () => navigate("/products");
@@ -57,7 +58,7 @@ const MobileBottomBar = () => {
     shadow-[0_-4px_20px_rgba(0,0,0,0.6)]
   "
       >
-        <div className="flex justify-around items-center z-99999 py-2.5 px-4 text-white">
+        <div className="flex justify-around items-center z-99999 py-2 px-4 text-white">
           {/* Home */}
           <button
             onClick={handleHomeClick}
@@ -95,6 +96,11 @@ const MobileBottomBar = () => {
               <div className="absolute inset-0 w-8 h-8 rounded-xl bg-white/10 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
               <Heart className="relative w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
             </div>
+            {wishlistCount > 0 && (
+              <span className="absolute -top-1 -right-2 bg-red-500 text-[10px] px-1.5 rounded-full font-semibold">
+                {wishlistCount}
+              </span>
+            )}
           </button>
 
           {/* Account / Logout */}
