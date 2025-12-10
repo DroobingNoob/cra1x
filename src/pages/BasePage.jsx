@@ -2,6 +2,8 @@ import { Instagram, MailIcon, MessageCircle } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import cra1x from "../../src/assets/images/cra1x-logo-background-removed.png";
+import cardboard from "../assets/images/cardboard-texture.jpg"; // texture overlay
+import modelVid_New from "../assets/images/modelvid_new.mp4";
 
 const BasePage = () => {
   const links = [
@@ -20,6 +22,40 @@ const BasePage = () => {
         px-4 select-none overflow-hidden
       "
     >
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <video
+          src={modelVid_New}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-30"
+        />
+      </div>
+      {/* === Background Video === */}
+      <video
+        src={modelVid_New}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover md:object-contain brightness-[0.4]"
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90 z-10 pointer-events-none" />
+
+      {/* Cardboard Noise Overlay */}
+      <div
+        className="absolute inset-0 w-full h-full z-20 pointer-events-none"
+        style={{
+          backgroundImage: `url(${cardboard})`,
+          backgroundSize: "cover",
+          opacity: 0.7,
+          mixBlendMode: "overlay",
+        }}
+      />
+
       {/* Subtle Noise */}
       <div className="absolute inset-0 opacity-[0.09] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
@@ -28,7 +64,7 @@ const BasePage = () => {
         <img
           src={cra1x}
           alt="CRA1X Logo"
-          className="w-52 md:w-65 drop-shadow-[0_0_25px_rgba(0,0,0,0.7)]"
+          className="w-80 z-10 lg:w-80 drop-shadow-[0_0_25px_rgba(0,0,0,0.7)]"
         />
 
         <p className="uppercase text-[0.75rem] md:text-[0.85rem] tracking-[0.28em] mt-3 text-zinc-400 drop-shadow-[0_0_15px_rgba(0,0,0,0.7)]">

@@ -157,7 +157,7 @@ export default function ShopExclusive() {
     <section className="exclusive relative h-screen w-full overflow-hidden text-white mt-12">
       <div className="absolute inset-0 overflow-hidden z-0">
         <video
-          src={modelVid_New}
+          src={modelVideo}
           autoPlay
           loop
           muted
@@ -167,12 +167,12 @@ export default function ShopExclusive() {
       </div>
       {/* === Background Video === */}
       <video
-        src={modelVid_New}
+        src={modelVideo}
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover md:object-contain brightness-[0.4]"
+        className="absolute inset-0 w-full h-full object-cover md:object-contain brightness-[0.3]"
       />
 
       {/* Gradient Overlay */}
@@ -184,7 +184,7 @@ export default function ShopExclusive() {
         style={{
           backgroundImage: `url(${cardboard})`,
           backgroundSize: "cover",
-          opacity: 0.9,
+          opacity: 0.5,
           mixBlendMode: "overlay",
         }}
       />
@@ -207,7 +207,7 @@ export default function ShopExclusive() {
         <img
           src={cra1x}
           alt="Logo"
-          className="w-60 z-10 lg:w-60 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]"
+          className="w-80 z-10 lg:w-80 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]"
         />
 
         <p className="uppercase text-[0.9rem] tracking-[0.3em] text-zinc-400 select-none z-10 drop-shadow-[0_0_20px_rgba(0,0,0,0.6)]">
