@@ -131,6 +131,7 @@ import "./ShopExclusive.scss";
 import modelVideo from "../../assets/images/model.MOV"; // your background video
 import cardboard from "../../assets/images/cardboard-texture.jpg"; // texture overlay
 import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
+import modelVid_New from "../../assets/images/modelvid_new.mp4";
 
 // const images = [model1, model2, model3, model5, model6, model7];
 
@@ -156,7 +157,7 @@ export default function ShopExclusive() {
     <section className="exclusive relative h-screen w-full overflow-hidden text-white mt-12">
       <div className="absolute inset-0 overflow-hidden z-0">
         <video
-          src={modelVideo}
+          src={modelVid_New}
           autoPlay
           loop
           muted
@@ -166,7 +167,7 @@ export default function ShopExclusive() {
       </div>
       {/* === Background Video === */}
       <video
-        src={modelVideo}
+        src={modelVid_New}
         autoPlay
         loop
         muted

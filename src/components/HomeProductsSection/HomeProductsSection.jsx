@@ -192,7 +192,7 @@ const HomeProductsSection = () => {
                   {/* Product Info */}
                   <div className="pt-3 text-center">
                     <h3 className="font-medium text-lg tracking-wide truncate group-hover:underline transition-colors">
-                      ★ {product.name} ★
+                      {product.name}
                     </h3>
 
                     <div className="flex justify-center items-center gap-2 mt-1 text-sm">

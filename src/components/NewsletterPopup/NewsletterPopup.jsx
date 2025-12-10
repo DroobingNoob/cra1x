@@ -174,7 +174,7 @@ const NewsletterPopup = ({ onOpen }) => {
             </p>
 
             <h2 className="text-3xl font-black goth-font text-center text-white leading-tight mb-2">
-              Join CRA1X CLUB
+              Join CRA1XB1TCH CLUB
             </h2>
 
             <h3 className="text-xl font-black goth-font text-center text-white mb-4">

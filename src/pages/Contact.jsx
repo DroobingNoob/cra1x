@@ -92,33 +92,33 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4 hover:text-white transition-colors duration-300">
+              {/* <div className="flex items-center gap-4 hover:text-white transition-colors duration-300">
                 <Phone className="text-white opacity-80" size={22} />
                 <p className="text-gray-300 text-sm sm:text-base">
                   +91 98701 40982
                 </p>
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-4 hover:text-white transition-colors duration-300">
                 <MapPin className="text-white opacity-80" size={22} />
                 <p className="text-gray-300 text-sm sm:text-base">
-                  Mumbai, India
+                  Delhi, India
                 </p>
               </div>
             </div>
 
             <div className="flex gap-5 mt-4">
               <a
-                href="#"
+                href="https://www.instagram.com/cra1x_/"
                 className="p-3 border border-zinc-700 rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
               >
                 <Instagram size={18} />
               </a>
               <a
-                href="#"
+                href="mailto:cra1x.queries@gmail.com"
                 className="p-3 border border-zinc-700 rounded-full hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
               >
-                <Facebook size={18} />
+                <Mail size={18} />
               </a>
             </div>
           </div>

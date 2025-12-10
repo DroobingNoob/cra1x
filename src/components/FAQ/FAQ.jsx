@@ -34,9 +34,20 @@ const FAQItem = ({ item, isOpen, onClick }) => {
   }, [isOpen]);
 
   return (
-    <div className="bg-black/80 border border-gray-700 rounded-lg shadow-lg">
+    <div
+      className="
+        rounded-lg shadow-lg 
+        bg-[linear-gradient(145deg,rgba(255,255,255,0.08),rgba(180,180,180,0.05))]
+        border border-white/20
+        backdrop-blur-sm
+      "
+    >
       <button
-        className="w-full text-left px-6 py-4 flex justify-between items-center goth-font font-bold text-lg hover:bg-gray-900 transition"
+        className="
+          w-full text-left px-6 py-4 flex justify-between items-center 
+          goth-font font-bold text-lg 
+          hover:bg-white/10 transition
+        "
         onClick={onClick}
       >
         <span>{item.question}</span>
@@ -49,15 +60,16 @@ const FAQItem = ({ item, isOpen, onClick }) => {
         </span>
       </button>
 
-      {/* height-controlled wrapper */}
       <div
         style={{ height }}
         className="overflow-hidden transition-all duration-300"
       >
-        {/* inner padding container */}
         <div
           ref={contentRef}
-          className="px-6 pt-2 pb-4 text-sm md:text-base font-mono text-gray-300"
+          className="
+            px-6 pt-2 pb-4 text-sm md:text-base font-mono 
+            text-gray-300
+          "
         >
           {item.answer}
         </div>
@@ -75,7 +87,7 @@ const FAQ = () => {
 
   return (
     <section className="max-w-4xl mx-auto px-5 py-16 text-white relative z-10">
-      <h2 className="text-3xl md:text-6xl font-black goth-font text-glow text-center mb-12 select-none">
+      <h2 className="text-3xl md:text-6xl font-black goth-font text-center mb-12 select-none">
         FAQs
       </h2>
 

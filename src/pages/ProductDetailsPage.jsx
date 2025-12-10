@@ -168,7 +168,7 @@ const ProductDetailsPage = () => {
             className="flex flex-col justify-center space-y-7"
           >
             <h1 className="text-4xl md:text-5xl font-bold leading-tight goth-font tracking-wide">
-              ★ {product.name} ★
+              {product.name}
             </h1>
 
             {/* Pricing */}

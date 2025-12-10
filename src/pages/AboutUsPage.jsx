@@ -25,7 +25,7 @@ const AboutUsPage = () => {
         </motion.h1>
 
         {/* Quote */}
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -34,7 +34,7 @@ const AboutUsPage = () => {
           “Accessories used to be a mark of identity—now they’re just
           factory-made replicas stamped out for the masses. When did we stop
           wearing meaning?”
-        </motion.p>
+        </motion.p> */}
 
         {/* Main Content */}
         <motion.div

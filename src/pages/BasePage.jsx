@@ -6,7 +6,7 @@ import cra1x from "../../src/assets/images/cra1x-logo-background-removed.png";
 const BasePage = () => {
   const links = [
     { label: "SHOP NOW!", to: "/home" },
-    { label: "★ CRA1X CLUB ★", to: "/cra1x-club" },
+    { label: "★ CRA1XB1TCH CLUB ★", to: "/cra1x-club" },
     { label: "ABOUT US", to: "/about" },
   ];
 

@@ -4,7 +4,13 @@ const InstagramSection = () => {
   return (
     <section className="relative w-full py-20 text-center text-white overflow-hidden">
       {/* Full-width Background gradient/overlay */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black via-gray-900 to-black opacity-80 -z-10"></div>
+      <div
+        className="
+          absolute inset-0 w-full h-full 
+          bg-gradient-to-b from-black via-[#2a2a2a] to-black 
+          opacity-80 -z-10
+        "
+      ></div>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-5">

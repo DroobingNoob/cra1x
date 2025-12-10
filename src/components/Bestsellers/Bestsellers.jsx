@@ -245,7 +245,7 @@ const Bestsellers = () => {
                       {product.name}
                     </h3> */}
                     <h3 className="font-medium text-base md:text-lg lg:text-xl tracking-wide truncate group-hover:underline transition-colors">
-                      ★ {product.name} ★
+                      {product.name}
                     </h3>
 
                     {/* <p className="text-sm text-gray-300 mt-1">

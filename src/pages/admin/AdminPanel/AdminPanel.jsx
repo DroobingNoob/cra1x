@@ -31,7 +31,7 @@ const tabs = [
   { id: "inventory", name: "Inventory", icon: Boxes },
   { id: "messages", name: "Messages", icon: MessageSquareHeart },
   { id: "settings", name: "Settings", icon: Settings },
-  { id: "newsletter", name: "Newsletter Subscribers", icon: Newspaper },
+  { id: "newsletter", name: "Club Members", icon: Newspaper },
 ];
 
 const AdminPanel = () => {

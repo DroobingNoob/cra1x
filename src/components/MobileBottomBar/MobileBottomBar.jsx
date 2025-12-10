@@ -48,25 +48,27 @@ const MobileBottomBar = () => {
     <>
       {/* Bottom Bar */}
       <div className="sm:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-30 flex flex-col items-center">
-        {/* Frosted glass background */}
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full border border-white/20 shadow-xl pointer-events-none"></div>
+        {/* Subtle frosted glass background */}
+        <div className="absolute inset-0 bg-white/5 backdrop-blur-md rounded-full border border-white/10 shadow-md pointer-events-none"></div>
 
         {/* Icons */}
-        <div className="relative flex justify-around items-center py-3 px-5 rounded-full text-white w-full">
+        {/* <div className="relative flex justify-around items-center py-2.5 px-5 rounded-full text-white w-full"> */}
+        <div className="relative flex justify-around items-center py-1 px-2 rounded-full text-white w-full">
           {/* Home */}
           <button
             onClick={handleHomeClick}
-            className="flex flex-col items-center hover:scale-110 transition-transform"
+            className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
           >
-            <Grid className="w-6 h-6" />
+            <Grid className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
           </button>
 
           {/* Cart */}
           <button
             onClick={handleCartClick}
-            className="relative flex flex-col items-center hover:scale-110 transition-transform"
+            className="group relative flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
           >
-            <ShoppingCart className="w-6 h-6" />
+            <ShoppingCart className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+
             {cartCount > 0 && (
               <span className="absolute -top-1.5 -right-2 bg-red-500 text-[10px] px-1.5 rounded-full font-semibold">
                 {cartCount}
@@ -77,33 +79,28 @@ const MobileBottomBar = () => {
           {/* Wishlist */}
           <button
             onClick={handleWishlistClick}
-            className="relative flex flex-col items-center hover:scale-110 transition-transform"
+            className="group relative flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
           >
-            <Heart className="w-6 h-6" />
-            {/* {wishlistCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 bg-pink-500 text-[10px] px-1.5 rounded-full font-semibold">
-                {wishlistCount}
-              </span>
-            )} */}
+            <Heart className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
           </button>
 
           {/* Account / Logout */}
           {user ? (
             <button
               onClick={() => setShowLogoutConfirm(true)}
-              className="flex flex-col items-center hover:scale-110 transition-transform group"
+              className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
             >
-              <LogOut className="w-6 h-6 text-red-400 group-hover:text-red-300 transition-colors" />
-              <span className="text-[11px] text-white/70 mt-0.5">
+              <LogOut className="w-5 h-5 text-red-300 group-hover:text-red-200 transition-colors" />
+              <span className="text-[11px] text-white/60 mt-0.5">
                 {user?.name?.split(" ")[0]}
               </span>
             </button>
           ) : (
             <button
               onClick={handleAccountClick}
-              className="flex flex-col items-center hover:scale-110 transition-transform"
+              className="group flex flex-col items-center hover:bg-white/5 active:bg-white/10 p-2 rounded-full transition-all"
             >
-              <User className="w-6 h-6" />
+              <User className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
             </button>
           )}
         </div>
