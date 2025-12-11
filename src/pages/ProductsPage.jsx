@@ -117,7 +117,7 @@ const ProductsPage = () => {
         </h2>
 
         {/* Search + Filters */}
-        <div className="sticky top-20 z-30 bg-zinc-950/80 backdrop-blur-lg border border-zinc-800 rounded-xl p-4 mb-10">
+        <div className="top-20 z-30 bg-zinc-950/80 backdrop-blur-lg border border-zinc-800 rounded-xl p-4 mb-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="relative w-full md:w-1/3">
               <Search
