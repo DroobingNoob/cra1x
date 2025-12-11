@@ -105,18 +105,19 @@ const MobileBottomBar = () => {
 
           {/* Account / Logout */}
           {user ? (
-            <button
-              onClick={() => setShowLogoutConfirm(true)}
-              className="group flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
-            >
-              <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 w-8 h-8 rounded-xl bg-red-300/20 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
-                <LogOut className="relative w-6 h-6 text-red-300 group-hover:text-red-200 transition-colors" />
-              </div>
-              <span className="text-[12px] text-white/60 mt-1">
-                {user?.name?.split(" ")[0]}
-              </span>
-            </button>
+            // <button
+            //   onClick={() => setShowLogoutConfirm(true)}
+            //   className="group flex flex-col items-center p-3 rounded-xl hover:bg-white/5 active:bg-white/10 transition-all"
+            // >
+            //   <div className="relative flex items-center justify-center">
+            //     <div className="absolute inset-0 w-8 h-8 rounded-xl bg-red-300/20 blur-md opacity-40 group-hover:opacity-70 transition-all"></div>
+            //     <LogOut className="relative w-6 h-6 text-red-300 group-hover:text-red-200 transition-colors" />
+            //   </div>
+            //   <span className="text-[12px] text-white/60 mt-1">
+            //     {user?.name?.split(" ")[0]}
+            //   </span>
+            // </button>
+            <></>
           ) : (
             <button
               onClick={handleAccountClick}

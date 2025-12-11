@@ -218,12 +218,13 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Fullscreen Menu */}
+      {/* Mobile Fullscreen Menu */}
       <div
         className={`mobile-menu fixed top-0 right-0 h-full w-full z-[999]
-    bg-black/95 backdrop-blur-sm text-white flex flex-col items-center
-    justify-center text-lg font-mono
-    ${menuOpen ? "menu-open" : "menu-closed"}`}
+  bg-black/95 backdrop-blur-sm text-white flex flex-col
+  ${menuOpen ? "menu-open" : "menu-closed"}`}
       >
+        {/* Close Button */}
         <button
           onClick={toggleMenu}
           aria-label="Close menu"
@@ -232,23 +233,29 @@ const Navbar = () => {
           <X size={26} />
         </button>
 
-        <div className="menu-list flex flex-col items-center space-y-4">
+        {/* Optional - show user greeting at top */}
+        {/* {user && (
+          <div className="mt-16 mb-6 text-center text-white/70 text-lg">
+            Hi,{" "}
+            <span className="font-semibold">{user?.name?.split(" ")[0]}</span>
+          </div>
+        )} */}
+
+        {/* Menu Links */}
+        <div className="flex flex-col items-center space-y-4 flex-1 justify-center">
           <Link to="/home" onClick={toggleMenu} className="menu-item">
             Home
           </Link>
-
           {user && (
             <Link to="/my-orders" onClick={toggleMenu} className="menu-item">
               My Orders
             </Link>
           )}
-
           {isAdmin && (
             <Link to="/admin" onClick={toggleMenu} className="menu-item">
               Admin
             </Link>
           )}
-
           <Link to="/products" onClick={toggleMenu} className="menu-item">
             Products
           </Link>
@@ -262,6 +269,23 @@ const Navbar = () => {
             Contact
           </Link>
         </div>
+
+        {/* Logout at Bottom */}
+        {user && (
+          <div className="pb-10">
+            <button
+              onClick={() => {
+                setShowLogoutConfirm(true);
+                toggleMenu();
+              }}
+              className="flex items-center justify-center gap-2 w-[85%] mx-auto 
+        bg-white/10 hover:bg-white/20 py-3 rounded-xl transition"
+            >
+              <LogOut className="w-5 h-5 text-red-300" />
+              <span className="text-sm text-red-300">Logout</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
