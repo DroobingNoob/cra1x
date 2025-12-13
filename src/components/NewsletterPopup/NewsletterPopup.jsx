@@ -5,7 +5,7 @@ import cra1x from "../../assets/images/cra1x-logo-background-removed.png";
 import { BASE_URL } from "../../config/config";
 
 const NewsletterPopup = ({ onOpen }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
