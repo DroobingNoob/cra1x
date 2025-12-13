@@ -182,6 +182,7 @@ const CartPage = () => {
                   <img
                     src={item.image}
                     className="w-28 h-28 object-cover rounded-xl"
+                    onClick={() => navigate(`/product/${item.productId}`)}
                   />
 
                   {/* Item Info */}

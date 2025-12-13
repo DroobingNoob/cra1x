@@ -10,6 +10,7 @@ import ModelShowcase from "../components/ModelShowcase/ModelShowcase";
 import NewsletterSection from "../components/NewsletterSection/NewsletterSection";
 import HomeProductsSection from "../components/HomeProductsSection/HomeProductsSection";
 import Loader from "../components/Loader/Loader";
+import NewArrivals from "../components/NewArrivals/NewArrivals";
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ const HomePage = () => {
       <div className={`${showLoader ? "pointer-events-none" : ""}`}>
         <ShopExclusive />
         <HomeProductsSection />
+        <NewArrivals />
         <Bestsellers />
         <ModelShowcase />
         <FAQ />

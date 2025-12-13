@@ -122,9 +122,13 @@ const Bestsellers = () => {
     <section className="relative bg-zinc-950 text-white py-20 px-4 sm:px-6">
       {/* <div className="max-w-6xl mx-auto text-center goth-font relative"> */}
       <div className="w-full max-w-none mx-auto text-center goth-font relative">
-        <h2 className="text-3xl md:text-5xl font-black goth-font text-glow mb-12 select-none">
+        <h2 className="text-3xl md:text-6xl font-black goth-font text-glow mb-6 select-none">
           OUR BESTSELLERS
         </h2>
+
+        <p className="text-gray-400 tracking-widest text-xs mb-14">
+          MOST LOVED · MOST BOUGHT
+        </p>
 
         {/* <div className="relative w-full px-4 py-4 bg-zinc-950"> */}
         {/* <div className="relative w-full px-0 sm:px-4 py-8 bg-zinc-950 max-w-none mx-auto"> */}
@@ -173,7 +177,8 @@ const Bestsellers = () => {
                   whileHover={{ scale: 1.04 }}
                   transition={{ type: "spring", stiffness: 200, damping: 18 }}
                   // className="group relative w-full cursor-pointer"
-                  className="group relative w-full cursor-pointer pb-6"
+                  className="group relative w-full cursor-pointer pb-6
+           hover:-translate-y-1 transition-transform duration-300"
                 >
                   <div className="relative aspect-square overflow-hidden rounded-2xl">
                     <motion.img

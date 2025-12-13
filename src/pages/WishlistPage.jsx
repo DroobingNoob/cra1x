@@ -45,13 +45,14 @@ const WishlistPage = () => {
         <div className="grid gap-4">
           {wishlistItems.map((item) => (
             <div
-              key={item.id}
+              key={item.productId}
               className="flex flex-col sm:flex-row items-center border border-zinc-800 rounded-2xl p-4 shadow-sm"
             >
               <img
                 src={item.image || "/placeholder.png"}
                 alt={item.name}
                 className="w-24 h-24 object-cover rounded-xl mb-3 sm:mb-0 sm:mr-5"
+                onClick={() => navigate(`/product/${item.productId}`)}
               />
 
               <div className="flex-1 w-full">

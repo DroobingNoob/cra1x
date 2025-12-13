@@ -24,6 +24,9 @@ const ProductDetailsPage = () => {
   const [isEligible, setIsEligible] = useState(false);
   const [loadingReviews, setLoadingReviews] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [loadingRelated, setLoadingRelated] = useState(true);
+  const [quantity, setQuantity] = useState(1);
 
   const API_URL = `${BASE_URL}/products/${id}`;
 
@@ -41,6 +44,27 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     fetchProduct();
+  }, [id]);
+
+  useEffect(() => {
+    if (product) setQuantity(1);
+  }, [product]);
+
+  useEffect(() => {
+    const fetchRelatedProducts = async () => {
+      try {
+        setLoadingRelated(true);
+        const res = await fetch(`${BASE_URL}/products/related/${id}`);
+        const data = await res.json();
+        setRelatedProducts(data || []);
+      } catch (err) {
+        console.error("Failed to load related products");
+      } finally {
+        setLoadingRelated(false);
+      }
+    };
+
+    fetchRelatedProducts();
   }, [id]);
 
   useEffect(() => {
@@ -187,9 +211,6 @@ const ProductDetailsPage = () => {
     try {
       const token = localStorage.getItem("token");
       if (!token) return toast.error("Please log in to add items to cart.");
-      const quantity = Number(
-        document.querySelector("input[type=number]").value
-      );
       const res = await fetch(`${BASE_URL}/cart/add`, {
         method: "POST",
         headers: {
@@ -334,7 +355,7 @@ const ProductDetailsPage = () => {
             </p>
 
             {/* Quantity Selector */}
-            <div>
+            {/* <div>
               <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
                 Quantity
               </p>
@@ -345,6 +366,46 @@ const ProductDetailsPage = () => {
                 max={product.stock}
                 className="w-24 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-center focus:outline-none focus:ring-1 focus:ring-gray-500"
               />
+            </div> */}
+
+            {/* Quantity Selector */}
+            <div>
+              <p className="text-sm text-gray-300 mb-2 uppercase tracking-wider">
+                Quantity
+              </p>
+
+              <div className="inline-flex items-center bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden">
+                {/* Minus */}
+                <button
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  disabled={quantity === 1}
+                  className="px-4 py-2 text-gray-400 hover:text-white hover:bg-zinc-900
+                 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  −
+                </button>
+
+                {/* Value */}
+                <div className="w-12 text-center text-sm font-medium">
+                  {quantity}
+                </div>
+
+                {/* Plus */}
+                <button
+                  onClick={() =>
+                    setQuantity((q) => Math.min(product.stock, q + 1))
+                  }
+                  disabled={quantity === product.stock || product.stock === 0}
+                  className="px-4 py-2 text-gray-400 hover:text-white hover:bg-zinc-900
+                 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  +
+                </button>
+              </div>
+
+              <p className="text-xs text-gray-500 mt-2">
+                {product.stock} available
+              </p>
             </div>
 
             {/* CTA Buttons */}
@@ -573,6 +634,69 @@ const ProductDetailsPage = () => {
           ))}
         </div>
       </div>
+      {/* YOU MIGHT BE INTERESTED IN */}
+      {relatedProducts.length !== 0 ? (
+        <div className="max-w-6xl mx-auto mt-32 border-t border-zinc-800 pt-16">
+          <h2 className="text-3xl font-bold mb-10 goth-font tracking-wide">
+            You Might Be Interested In
+          </h2>
+
+          {loadingRelated ? (
+            <p className="text-gray-500">Loading recommendations...</p>
+          ) : relatedProducts.length === 0 ? (
+            <p className="text-gray-500">No related products found.</p>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+              {relatedProducts.map((item) => (
+                <motion.div
+                  key={item._id}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                  onClick={() => navigate(`/product/${item._id}`)}
+                  className="cursor-pointer bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden
+                     hover:border-zinc-600 transition"
+                >
+                  {/* Image */}
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={item.images?.[0] || "/placeholder.jpg"}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-4 text-center">
+                    <h3 className="text-sm md:text-base font-medium truncate">
+                      {item.name}
+                    </h3>
+
+                    <div className="mt-1 text-sm text-gray-300">
+                      ₹{item.discounted_price.toLocaleString()}
+                      {item.actual_price > item.discounted_price && (
+                        <span className="ml-2 line-through text-gray-500 text-xs">
+                          ₹{item.actual_price.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+
+                    {item.bestseller && (
+                      <span
+                        className="inline-block mt-2 text-[10px] uppercase tracking-wider
+                               text-gray-400 bg-zinc-800/70 px-2 py-1 rounded-full"
+                      >
+                        Bestseller
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };
